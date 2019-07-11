@@ -22,6 +22,8 @@
     "@emotion/core": "^10.0.14",
     "@mdx-js/react": "^1.0.21",
     "gatsby-plugin-theme-ui": "^0.2.2",
+    "gatsby-source-anchor": "^0.5.1",
+    "gatsby-source-rss-feed": "^1.1.1",
     "theme-ui": "^0.2.2"
   },
   "keywords": [

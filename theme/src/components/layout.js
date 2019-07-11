@@ -3,6 +3,12 @@ import { css, Global } from "@emotion/core"
 import { Layout as StyledLayout, Header, Main, Container } from "theme-ui"
 import { graphql, useStaticQuery } from "gatsby"
 
+const globalStyles = css`
+  body {
+    margin: 0;
+  }
+`
+
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
     query {
@@ -16,13 +22,7 @@ const Layout = ({ children }) => {
 
   return (
     <StyledLayout>
-      <Global
-        styles={css`
-          body {
-            margin: 0;
-          }
-        `}
-      />
+      <Global styles={globalStyles} />
       <Header>
         <span>{data.site.siteMetadata.title}</span>
       </Header>
