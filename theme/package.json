@@ -1,11 +1,11 @@
 {
   "name": "gatsby-theme-anchor",
-  "author": "Jason Lengstorf <jason@gatsbyjs.com>",
+  "author": "Ema Suriano",
   "repository": {
     "type": "git",
     "url": "https://github.com/emasuriano/gatsby-theme-anchor.git"
   },
-  "version": "1.0.1",
+  "version": "0.0.1",
   "main": "index.js",
   "license": "MIT",
   "peerDependencies": {
