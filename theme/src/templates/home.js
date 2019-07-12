@@ -38,10 +38,11 @@ const Home = () => {
     }
   `)
 
-  console.log(data)
+  const { podcast, latestEpisodes } = data
   return (
     <Layout>
-      <Styled.h1>{data.podcast.title}</Styled.h1>
+      <Styled.h1>{podcast.title}</Styled.h1>
+      <Styled.h2>{podcast.description}</Styled.h2>
     </Layout>
   )
 }
