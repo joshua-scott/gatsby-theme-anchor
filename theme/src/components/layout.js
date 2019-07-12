@@ -1,6 +1,12 @@
 import React from "react"
 import { css, Global } from "@emotion/core"
-import { Layout as StyledLayout, Header, Main, Container } from "theme-ui"
+import {
+  Layout as StyledLayout,
+  Header,
+  Main,
+  Container,
+  Footer,
+} from "theme-ui"
 import { graphql, useStaticQuery } from "gatsby"
 
 const globalStyles = css`
@@ -29,6 +35,9 @@ const Layout = ({ children }) => {
       <Main>
         <Container>{children}</Container>
       </Main>
+      <Footer>
+        <span>Is this footer really goes down?</span>
+      </Footer>
     </StyledLayout>
   )
 }

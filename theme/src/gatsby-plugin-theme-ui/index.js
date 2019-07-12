@@ -1,8 +1,5 @@
-/**
- * This theme uses `theme-ui` under the hood.
- * @see https://theme-ui.com/
- * @see https://theme-ui.com/gatsby-plugin/
- */
+import { base } from "@theme-ui/presets"
+
 export default {
   colors: {
     text: "#232129",
