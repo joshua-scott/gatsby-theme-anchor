@@ -6,7 +6,8 @@
     "url": "https://github.com/emasuriano/gatsby-theme-anchor.git"
   },
   "scripts": {
-    "type-check": "tsc --noEmit --jsx react --allowSyntheticDefaultImports src/**/*"
+    "type-check": "tsc --noEmit --jsx react --allowSyntheticDefaultImports src/**/*",
+    "format": "prettier --write src/**/*.{ts,tsx}"
   },
   "version": "0.0.1",
   "main": "index.js",
@@ -29,6 +30,7 @@
     "gatsby-plugin-typescript": "^2.1.2",
     "gatsby-source-anchor": "^0.5.1",
     "gatsby-source-rss-feed": "^1.1.1",
+    "react-headroom": "^2.2.8",
     "theme-ui": "^0.2.2",
     "typescript": "^3.5.3"
   },

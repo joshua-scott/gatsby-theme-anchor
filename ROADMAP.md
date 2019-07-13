@@ -7,12 +7,18 @@ The idea of the starter will be to have 4 pages:
 - [About](#About): This page will start using the CMS and here the author can use this page for whatever they want to say. Ideally inside the CMS I will use a Markdown text Editor and then here I can use mdx to render cool components that will go with the esthetic of the page.
 - [News](#News): it will use the CMS and the idea is to show a bunch of posts that the author can do. This will be more or less like a newsletter section.
 
+## General tooling
+
+1. Setup typescript ✅
+2. Remove theme-ui and setup Rebass with styled-components
+3. Setup CI for PR checker
+
 ## Home
 
-1. Finish Banner, hast to:
-   1. Show the name of the podcast
-   2. Show description
-   3. Show logo
+1. Finish Banner (maybe change name becuase it's confusing), hast to:
+   1. Show the name of the podcast ✅
+   2. Show description ✅
+   3. Show logo ✅
    4. Show links to all the publications
    5. Be fancy 💅
 2. Make Podcast Component, has to:

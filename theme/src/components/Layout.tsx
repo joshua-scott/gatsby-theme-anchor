@@ -1,14 +1,9 @@
 import React, { ReactNode } from 'react';
 import { css, Global } from '@emotion/core';
-import {
-  Layout as StyledLayout,
-  Header,
-  Main,
-  Container,
-  Footer,
-} from 'theme-ui';
-import { graphql, useStaticQuery } from 'gatsby';
-import { SiteMetadata } from '../types/Gatsby';
+import { Layout as StyledLayout, Main, Container, Footer } from 'theme-ui';
+
+import Header from './Header';
+import { PageTypes } from '../types/Pages';
 
 const globalStyles = css`
   body {
@@ -18,31 +13,14 @@ const globalStyles = css`
 
 type Props = {
   children: ReactNode;
+  location: PageTypes;
 };
 
-type LayoutQuery = {
-  site: {
-    siteMetadata: SiteMetadata;
-  };
-};
-
-const Layout = ({ children }: Props) => {
-  const data = useStaticQuery<LayoutQuery>(graphql`
-    query LayoutQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `);
-
+const Layout = ({ children, location }: Props) => {
   return (
     <StyledLayout>
       <Global styles={globalStyles} />
-      <Header>
-        <span>{data.site.siteMetadata.title}</span>
-      </Header>
+      <Header currentPage={location} />
       <Main>
         <Container>{children}</Container>
       </Main>

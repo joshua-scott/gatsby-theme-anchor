@@ -31,14 +31,6 @@ export default {
       color: 'background',
       fontWeight: 'bold',
       margin: 0,
-      span: {
-        display: 'block',
-        fontSize: 3,
-        margin: '0 auto',
-        maxWidth: 'container',
-        padding: 3,
-        width: '90vw',
-      },
     },
     Main: {
       margin: '0 auto',

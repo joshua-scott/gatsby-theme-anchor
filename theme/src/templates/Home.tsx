@@ -52,6 +52,11 @@ const Home = () => {
   return (
     <Layout>
       <Banner {...podcast} />
+      <Banner {...podcast} />
+      <Banner {...podcast} />
+      <Banner {...podcast} />
+      <Banner {...podcast} />
+      <Banner {...podcast} />
       {/* <div>
         <Styled.h1>Latest episodes</Styled.h1>
         {latestEpisodes.nodes.map(({ id, ...rest }) => (
