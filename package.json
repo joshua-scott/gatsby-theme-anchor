@@ -6,7 +6,7 @@
   ],
   "husky": {
     "hooks": {
-      "pre-push": "yarn type-check"
+      "pre-push": "yarn workspace gatsby-theme-anchor type-check"
     }
   }
 }
