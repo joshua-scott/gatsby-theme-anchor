@@ -3,5 +3,10 @@
   "workspaces": [
     "theme",
     "demo"
-  ]
+  ],
+  "husky": {
+    "hooks": {
+      "pre-push": "yarn type-check"
+    }
+  }
 }

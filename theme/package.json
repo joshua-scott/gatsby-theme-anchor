@@ -9,11 +9,6 @@
     "type-check": "tsc --noEmit --jsx react --allowSyntheticDefaultImports src/**/*",
     "format": "prettier --write src/**/*.{ts,tsx}"
   },
-  "husky": {
-    "hooks": {
-      "pre-push": "yarn type-check"
-    }
-  },
   "version": "0.0.1",
   "main": "index.js",
   "license": "MIT",
