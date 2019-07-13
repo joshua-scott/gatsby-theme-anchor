@@ -50,7 +50,7 @@ const Home = () => {
   const { podcast, latestEpisodes } = data;
   console.log(latestEpisodes);
   return (
-    <Layout>
+    <Layout location="home">
       <Banner {...podcast} />
       <Banner {...podcast} />
       <Banner {...podcast} />

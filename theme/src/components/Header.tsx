@@ -3,6 +3,7 @@ import ReactHeadroom from 'react-headroom';
 import { graphql, useStaticQuery, Link } from 'gatsby';
 import { Header as StyledHeader, Flex, Styled } from 'theme-ui';
 import { Podcast } from '../types/Anchor';
+import { PageTypes } from '../types/Pages';
 
 type LayoutQuery = {
   podcast: Podcast;
