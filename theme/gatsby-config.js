@@ -4,12 +4,14 @@ module.exports = ({ anchorRss }) => {
       'anchorRss not defined inside the options of `gatbsy-theme-anchor`',
     );
   }
+
   return {
     siteMetadata: {
       title: 'Gatsby Theme Jam Example Submission',
     },
     plugins: [
       'gatsby-plugin-theme-ui',
+      'gatsby-plugin-typescript',
       {
         resolve: 'gatsby-source-anchor',
         options: {

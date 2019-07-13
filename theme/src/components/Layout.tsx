@@ -1,30 +1,41 @@
-import React from "react"
-import { css, Global } from "@emotion/core"
+import React, { ReactNode } from 'react';
+import { css, Global } from '@emotion/core';
 import {
   Layout as StyledLayout,
   Header,
   Main,
   Container,
   Footer,
-} from "theme-ui"
-import { graphql, useStaticQuery } from "gatsby"
+} from 'theme-ui';
+import { graphql, useStaticQuery } from 'gatsby';
+import { SiteMetadata } from '../types/Gatsby';
 
 const globalStyles = css`
   body {
     margin: 0;
   }
-`
+`;
 
-const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query {
+type Props = {
+  children: ReactNode;
+};
+
+type LayoutQuery = {
+  site: {
+    siteMetadata: SiteMetadata;
+  };
+};
+
+const Layout = ({ children }: Props) => {
+  const data = useStaticQuery<LayoutQuery>(graphql`
+    query LayoutQuery {
       site {
         siteMetadata {
           title
         }
       }
     }
-  `)
+  `);
 
   return (
     <StyledLayout>
@@ -39,7 +50,7 @@ const Layout = ({ children }) => {
         <span>Is this footer really goes down?</span>
       </Footer>
     </StyledLayout>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;

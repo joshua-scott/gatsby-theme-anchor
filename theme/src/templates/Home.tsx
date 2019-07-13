@@ -1,12 +1,18 @@
-import React from "react"
-import { Styled } from "theme-ui"
-import Layout from "../components/Layout"
-import Banner from "../components/Banner"
-import Podcast from "../components/Podcast"
-import { graphql, useStaticQuery } from "gatsby"
+import React from 'react';
+import { Styled } from 'theme-ui';
+import Layout from '../components/Layout';
+import Banner from '../components/Banner';
+// import EpisodeCard from '../components/EpisodeCard';
+import { graphql, useStaticQuery } from 'gatsby';
+import { Episode, Podcast } from '../types/Anchor';
+
+type HomeQuery = {
+  latestEpisodes: Episode[];
+  podcast: Podcast;
+};
 
 const Home = () => {
-  const data = useStaticQuery(graphql`
+  const data = useStaticQuery<HomeQuery>(graphql`
     query HomeQuery {
       latestEpisodes: allAnchorEpisode(limit: 3) {
         nodes {
@@ -39,21 +45,21 @@ const Home = () => {
         }
       }
     }
-  `)
+  `);
 
-  const { podcast, latestEpisodes } = data
-  console.log(latestEpisodes)
+  const { podcast, latestEpisodes } = data;
+  console.log(latestEpisodes);
   return (
     <Layout>
       <Banner {...podcast} />
-      <div>
+      {/* <div>
         <Styled.h1>Latest episodes</Styled.h1>
         {latestEpisodes.nodes.map(({ id, ...rest }) => (
           <Podcast key={id} {...rest} />
         ))}
-      </div>
+      </div> */}
     </Layout>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
