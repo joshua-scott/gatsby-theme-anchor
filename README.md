@@ -5,16 +5,16 @@
 **This theme is not ready yet, please wait a few days more 🙏**
 
 <p align="center">
-      <a href="https://gatsby-theme-anchor.netlify.com/">
-        <img src="./media/cover.jpeg" alt="Cover" />
-      </a>
-      <br />
-      <i>
-        A
-        <a href="https://www.gatsbyjs.org/">Gatsby</a>
-        Theme to showcase your podcast in
-        <a href="https://anchor.fm/">Anchor</a>
-    </i>
+  <a href="https://gatsby-theme-anchor.netlify.com/">
+    <img src="./media/cover.jpeg" alt="Cover" />
+  </a>
+  <br />
+  <i>
+    A
+    <a href="https://www.gatsbyjs.org/">Gatsby</a>
+    Theme to showcase your podcast in
+    <a href="https://anchor.fm/">Anchor</a>
+  </i>
 </p>
 
 ## Motivation
