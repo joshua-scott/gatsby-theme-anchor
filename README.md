@@ -2,6 +2,8 @@
 
 # Gatsby Theme Anchor
 
+**This theme is not ready yet, please wait a few days more 🙏**
+
 <p align="center">
       <a href="https://gatsby-theme-anchor.netlify.com/">
         <img src="./media/cover.jpeg" alt="Cover" />
