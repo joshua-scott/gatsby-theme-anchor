@@ -19,9 +19,14 @@
 
 [Live Demo](https://gatsby-theme-anchor.netlify.com/)
 
-## Motivation
+## Motivation 
 
-## Features
+## Features 🤹
+
+* Typescript
+* CSS in JS
+* Theming
+* Anchor integration
 
 ## How to Start
 
