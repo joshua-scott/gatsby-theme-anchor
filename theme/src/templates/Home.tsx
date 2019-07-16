@@ -1,5 +1,4 @@
 import React from 'react';
-import { Styled } from 'theme-ui';
 import Layout from '../components/Layout';
 import Banner from '../components/Banner';
 // import EpisodeCard from '../components/EpisodeCard';
@@ -50,7 +49,7 @@ const Home = () => {
   const { podcast, latestEpisodes } = data;
   console.log(latestEpisodes);
   return (
-    <Layout location="home">
+    <Layout>
       <Banner {...podcast} />
       <Banner {...podcast} />
       <Banner {...podcast} />
