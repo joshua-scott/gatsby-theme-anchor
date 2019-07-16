@@ -1,17 +1,20 @@
 import React from 'react';
 import Layout from '../components/Layout';
 import Banner from '../components/Banner';
-// import EpisodeCard from '../components/EpisodeCard';
+import { Styled } from 'theme-ui';
+import EpisodeCard from '../components/EpisodeCard';
 import { graphql, useStaticQuery } from 'gatsby';
 import { Episode, Podcast } from '../types/Anchor';
 
-type HomeQuery = {
-  latestEpisodes: Episode[];
-  podcast: Podcast;
-};
+const useHomeQuery = () => {
+  type HomeQuery = {
+    latestEpisodes: {
+      nodes: Episode[];
+    };
+    podcast: Podcast;
+  };
 
-const Home = () => {
-  const data = useStaticQuery<HomeQuery>(graphql`
+  return useStaticQuery<HomeQuery>(graphql`
     query HomeQuery {
       latestEpisodes: allAnchorEpisode(limit: 3) {
         nodes {
@@ -45,23 +48,20 @@ const Home = () => {
       }
     }
   `);
+};
 
-  const { podcast, latestEpisodes } = data;
-  console.log(latestEpisodes);
+const Home = () => {
+  const { podcast, latestEpisodes } = useHomeQuery();
+
   return (
     <Layout>
       <Banner {...podcast} />
-      <Banner {...podcast} />
-      <Banner {...podcast} />
-      <Banner {...podcast} />
-      <Banner {...podcast} />
-      <Banner {...podcast} />
-      {/* <div>
+      <div>
         <Styled.h1>Latest episodes</Styled.h1>
-        {latestEpisodes.nodes.map(({ id, ...rest }) => (
-          <Podcast key={id} {...rest} />
+        {latestEpisodes.nodes.map(episode => (
+          <EpisodeCard key={episode.id} {...episode} />
         ))}
-      </div> */}
+      </div>
     </Layout>
   );
 };

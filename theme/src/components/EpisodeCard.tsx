@@ -4,10 +4,12 @@ import { Episode } from '../types/Anchor';
 
 type Props = Episode;
 
-const EpisodeCard = ({ title }: Props) => {
+const EpisodeCard = ({ title, link, isoDate, itunes, enclosure }: Props) => {
+  console.log(enclosure);
   return (
     <div>
-      <Styled.H1>{title}</Styled.H1>
+      <Styled.h1>{title}</Styled.h1>
+      <Styled.a href={link}>Link to the episode</Styled.a>
     </div>
   );
 };

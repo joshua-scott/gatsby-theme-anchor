@@ -10,8 +10,7 @@ The idea of the starter will be to have 4 pages:
 ## General tooling
 
 1. Setup typescript ✅
-2. Remove theme-ui and setup Rebass with styled-components
-3. Setup CI for PR checker
+2. Setup CI for PR checker
 
 ## Home
 
