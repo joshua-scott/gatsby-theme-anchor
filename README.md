@@ -19,14 +19,14 @@
 
 [Live Demo](https://gatsby-theme-anchor.netlify.com/)
 
-## Motivation 
+## Motivation
 
 ## Features 🤹
 
-* Typescript
-* CSS in JS
-* Theming
-* Anchor integration
+- Typescript
+- CSS in JS
+- Theming
+- Anchor integration
 
 ## How to Start
 
@@ -42,7 +42,7 @@ In order to keep the README short I decided to move this section to a [separate 
 
 ## Contributing
 
-Follow these steps to run the demo locally:
+This project is using yarn Workspace in order to be able to run a Gatsby project using the source code of the theme. Follow these steps to run the demo locally:
 
 1.  Clone the repo: `git clone https://github.com/EmaSuriano/gatsby-theme-anchor.git`
 2.  Install dependencies: `cd gatsby-theme-anchor && yarn`
