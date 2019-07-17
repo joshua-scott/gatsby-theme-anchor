@@ -1,8 +1,9 @@
 import React, { ReactNode, ReactComponentElement } from 'react';
 import { css, Global } from '@emotion/core';
-import { Layout as StyledLayout, Main, Container, Footer } from 'theme-ui';
+import { Layout as StyledLayout, Main, Container } from 'theme-ui';
 import Hero from './Hero';
 import Header from './Header';
+import Footer from './Footer';
 
 const globalStyles = css`
   body {
@@ -24,9 +25,7 @@ const Layout = ({ children, heroContent }: Props) => {
       <Main>
         <Container>{children}</Container>
       </Main>
-      <Footer>
-        <span>Is this footer really goes down?</span>
-      </Footer>
+      <Footer />
     </StyledLayout>
   );
 };
