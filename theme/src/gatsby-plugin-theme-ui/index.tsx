@@ -3,8 +3,10 @@ import { base } from '@theme-ui/presets';
 export default {
   colors: {
     text: '#232129',
+    invertText: '#fff',
     background: '#fff',
-    primary: '#639',
+    primary: '#663399',
+    secondary: '#e0ba48',
   },
   fonts: {
     default:
@@ -30,7 +32,8 @@ export default {
       backgroundColor: 'primary',
       color: 'background',
       fontWeight: 'bold',
-      margin: 0,
+      paddingLeft: 3,
+      paddingRight: 3,
     },
     Main: {
       margin: '0 auto',
@@ -46,6 +49,9 @@ export default {
       color: 'text',
       fontSize: 5,
       lineHeight: 'heading',
+    },
+    ul: {
+      padding: 0,
     },
   },
 };

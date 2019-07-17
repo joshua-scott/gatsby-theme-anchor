@@ -2,16 +2,16 @@ import React from 'react';
 import Layout from '../components/Layout';
 import Banner from '../components/Banner';
 import { Styled } from 'theme-ui';
-import EpisodeCard from '../components/EpisodeCard';
+import Episode from '../components/Episode';
 import { graphql, useStaticQuery } from 'gatsby';
-import { Episode, Podcast } from '../types/Anchor';
+import * as AnchorTypes from '../types/Anchor';
 
 const useHomeQuery = () => {
   type HomeQuery = {
     latestEpisodes: {
-      nodes: Episode[];
+      nodes: AnchorTypes.Episode[];
     };
-    podcast: Podcast;
+    podcast: AnchorTypes.Podcast;
   };
 
   return useStaticQuery<HomeQuery>(graphql`
@@ -29,7 +29,7 @@ const useHomeQuery = () => {
             explicit
           }
           contentSnippet
-          isoDate(formatString: "MMDDYYYY")
+          publishedDate: isoDate(formatString: "MM/DD/YYYY")
           enclosure {
             url
             type
@@ -54,14 +54,11 @@ const Home = () => {
   const { podcast, latestEpisodes } = useHomeQuery();
 
   return (
-    <Layout>
-      <Banner {...podcast} />
-      <div>
-        <Styled.h1>Latest episodes</Styled.h1>
-        {latestEpisodes.nodes.map(episode => (
-          <EpisodeCard key={episode.id} {...episode} />
-        ))}
-      </div>
+    <Layout heroContent={<Banner {...podcast} />}>
+      <Styled.h1>Latest episodes</Styled.h1>
+      {latestEpisodes.nodes.map(episode => (
+        <Episode key={episode.id} {...episode} />
+      ))}
     </Layout>
   );
 };

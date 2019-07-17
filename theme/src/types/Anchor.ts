@@ -20,7 +20,7 @@ export type Episode = {
     explicit: boolean;
   };
   contentSnippet: string;
-  isoDate: string;
+  publishedDate: string;
   enclosure: {
     url: string;
     type: string;

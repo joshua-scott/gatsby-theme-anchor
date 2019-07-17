@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactHeadroom from 'react-headroom';
 import { graphql, useStaticQuery, Link } from 'gatsby';
-import { Header as StyledHeader, Flex, Styled } from 'theme-ui';
+import { Header as StyledHeader, Flex, Styled, useThemeUI } from 'theme-ui';
 import { Podcast } from '../types/Anchor';
 import { SitePage } from '../types/Gatsby';
 import { Location } from '@reach/router';
@@ -19,27 +19,35 @@ type PageLinkProps = {
   route: string;
 };
 
-const PageLink = ({ name, selected, route }: PageLinkProps) => (
-  <Styled.li
-    style={{
-      color: selected ? 'red' : 'white',
-      display: 'inline-block',
-      margin: '0 10px',
-    }}
-  >
-    <Link
+const PageLink = ({ name, selected, route }: PageLinkProps) => {
+  const { theme } = useThemeUI();
+  return (
+    <Styled.li
       style={{
-        color: 'inherit',
-        textDecoration: 'none',
+        color: selected ? theme.colors.secondary : theme.colors.altText,
+        display: 'inline-block',
+        margin: '0 10px',
       }}
-      to={route}
     >
-      {name}
-    </Link>
-  </Styled.li>
-);
+      <Styled.a
+        as={Link}
+        style={{
+          color: 'inherit',
+          textDecoration: 'none',
+        }}
+        to={route}
+      >
+        {name}
+      </Styled.a>
+    </Styled.li>
+  );
+};
 
-const Header = () => {
+type Props = {
+  transparentHeader?: boolean;
+};
+
+const Header = ({ transparentHeader }: Props) => {
   const data = useStaticQuery<LayoutQuery>(graphql`
     query HeaderQuery {
       podcast: anchorPodcast {
@@ -56,11 +64,16 @@ const Header = () => {
       }
     }
   `);
-
   const { podcast, pages } = data;
   return (
     <ReactHeadroom>
-      <StyledHeader>
+      <StyledHeader
+        {...transparentHeader && {
+          style: {
+            background: 'transparent',
+          },
+        }}
+      >
         <Flex
           style={{
             justifyContent: 'space-between',
