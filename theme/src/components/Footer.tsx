@@ -14,7 +14,7 @@ const Footer = () => {
           <Flex>
             <div>
               <Styled.h4>About</Styled.h4>
-              <p class="text-justify">
+              <p className="text-justify">
                 Scanfcode.com <i>CODE WANTS TO BE SIMPLE </i> is an initiative
                 to help the upcoming programmers with the code. Scanfcode
                 focuses on providing the most efficient code or snippets as the
@@ -27,7 +27,7 @@ const Footer = () => {
 
             <div>
               <Styled.h4>Categories</Styled.h4>
-              <ul class="footer-links">
+              <ul className="footer-links">
                 <li>
                   <Styled.a href="http://scanfcode.com/category/c-language/">
                     C
@@ -63,7 +63,7 @@ const Footer = () => {
 
             <div>
               <Styled.h4>Categories</Styled.h4>
-              <ul class="footer-links">
+              <ul className="footer-links">
                 <li>
                   <Styled.a href="http://scanfcode.com/about/">
                     About Us
@@ -96,33 +96,33 @@ const Footer = () => {
         </Container>
         <Container>
           <Flex>
-            <div class="col-md-8 col-sm-6 col-xs-12">
-              <p class="copyright-text">
+            <div className="col-md-8 col-sm-6 col-xs-12">
+              <p className="copyright-text">
                 Copyright &copy; 2017 All Rights Reserved by
                 <Styled.a href="#">Scanfcode</Styled.a>.
               </p>
             </div>
 
-            <div class="col-md-4 col-sm-6 col-xs-12">
-              <ul class="social-icons">
+            <div className="col-md-4 col-sm-6 col-xs-12">
+              <ul className="social-icons">
                 <li>
-                  <Styled.a class="facebook" href="#">
-                    <i class="fa fa-facebook" />
+                  <Styled.a className="facebook" href="#">
+                    <i className="fa fa-facebook" />
                   </Styled.a>
                 </li>
                 <li>
-                  <Styled.a class="twitter" href="#">
-                    <i class="fa fa-twitter" />
+                  <Styled.a className="twitter" href="#">
+                    <i className="fa fa-twitter" />
                   </Styled.a>
                 </li>
                 <li>
-                  <Styled.a class="dribbble" href="#">
-                    <i class="fa fa-dribbble" />
+                  <Styled.a className="dribbble" href="#">
+                    <i className="fa fa-dribbble" />
                   </Styled.a>
                 </li>
                 <li>
-                  <Styled.a class="linkedin" href="#">
-                    <i class="fa fa-linkedin" />
+                  <Styled.a className="linkedin" href="#">
+                    <i className="fa fa-linkedin" />
                   </Styled.a>
                 </li>
               </ul>
