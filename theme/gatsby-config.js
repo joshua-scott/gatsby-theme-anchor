@@ -12,7 +12,13 @@ module.exports = ({ anchorRss }) => {
     plugins: [
       'gatsby-plugin-theme-ui',
       'gatsby-plugin-typescript',
-      'gatsby-plugin-netlify-cms',
+      {
+        resolve: 'gatsby-plugin-netlify-cms',
+        options: {
+          manualInit: true,
+          modulePath: `${__dirname}/src/cms`,
+        },
+      },
       {
         resolve: 'gatsby-source-anchor',
         options: {
