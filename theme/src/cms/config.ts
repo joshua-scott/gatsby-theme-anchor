@@ -1,5 +1,5 @@
-import CMS from 'netlify-cms';
-import IndexPagePreview from './preview-templates/index-page-preview';
+import CMS from 'netlify-cms-app';
+import IndexPagePreview from './index-page-preview';
 
 CMS.registerPreviewTemplate('index', IndexPagePreview);
 
