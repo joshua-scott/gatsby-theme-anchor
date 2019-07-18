@@ -1,4 +1,4 @@
-module.exports = ({ anchorRss }) => {
+module.exports = ({ anchorRss, cmsFolder }) => {
   if (!anchorRss) {
     throw new Error(
       'anchorRss not defined inside the options of `gatbsy-theme-anchor`',
@@ -25,6 +25,14 @@ module.exports = ({ anchorRss }) => {
           rss: anchorRss,
         },
       },
+      {
+        resolve: 'gatsby-source-filesystem',
+        options: {
+          path: `${cmsFolder}`,
+          name: 'data',
+        },
+      },
+      'gatsby-transformer-remark',
     ],
   };
 };
