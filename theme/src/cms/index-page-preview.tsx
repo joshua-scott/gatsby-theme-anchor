@@ -1,13 +1,14 @@
 import React from 'react';
+import { AboutTemplate } from '../templates/About';
 
 const IndexPagePreview = ({ entry, widgetFor }) => {
   console.log(entry);
 
   return (
-    <div>
-      <p>{entry.getIn(['data', 'title'])}</p>
-      {widgetFor('body')}
-    </div>
+    <AboutTemplate
+      title={entry.getIn(['data', 'title'])}
+      content={widgetFor('body')}
+    />
   );
 };
 

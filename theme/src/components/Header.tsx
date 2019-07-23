@@ -48,7 +48,7 @@ type Props = {
 };
 
 const Header = ({ transparentHeader }: Props) => {
-  const data = useStaticQuery<LayoutQuery>(graphql`
+  const { podcast, pages } = useStaticQuery<LayoutQuery>(graphql`
     query HeaderQuery {
       podcast: anchorPodcast {
         title
@@ -64,7 +64,7 @@ const Header = ({ transparentHeader }: Props) => {
       }
     }
   `);
-  const { podcast, pages } = data;
+
   return (
     <ReactHeadroom>
       <StyledHeader
