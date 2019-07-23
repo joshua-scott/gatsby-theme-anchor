@@ -2,11 +2,11 @@
 
 # gatsby-theme-anchor
 
-**This theme is not ready yet, therefore it's not ready for production.**
+**⚠️️️️️️⚠️This theme is still in development, avoid using it for production. ⚠️️⚠️**
 
 <p align="center">
   <a href="https://gatsby-theme-anchor.netlify.com/">
-    <img src="./media/cover.jpeg" alt="Cover" />
+    <img src="./docs/cover.jpeg" alt="Cover" />
   </a>
   <br />
   <i>
