@@ -1,137 +1,103 @@
 import React from 'react';
+import { Link } from 'gatsby';
 import { Footer as StyledFooter, Container, Flex, Box, Styled } from 'theme-ui';
 
-const Footer = () => {
+type PageLink = {
+  path: string;
+  name: string;
+};
+
+type SocialLink = PageLink & {
+  icon: string;
+};
+
+type FooterProps = {
+  logo: React.ReactNode;
+  description: string;
+  pages: PageLink[];
+  usefulLinks: PageLink[];
+  socialLinks: SocialLink[];
+  copyright: string;
+};
+
+const FooterTemplate = ({
+  logo,
+  description,
+  pages,
+  usefulLinks,
+  socialLinks,
+  copyright,
+}: FooterProps) => {
   return (
-    <StyledFooter>
-      <Flex
-        style={{
-          flexDirection: 'column',
-          margin: 'auto',
-        }}
-      >
-        <Container>
-          <Flex>
-            <div>
-              <Styled.h4>About</Styled.h4>
-              <p className="text-justify">
-                Scanfcode.com <i>CODE WANTS TO BE SIMPLE </i> is an initiative
-                to help the upcoming programmers with the code. Scanfcode
-                focuses on providing the most efficient code or snippets as the
-                code wants to be simple. We will help programmers build up
-                concepts in different programming languages that include C, C++,
-                Java, HTML, CSS, Bootstrap, JavaScript, PHP, Android, SQL and
-                Algorithm.
-              </p>
-            </div>
+    <StyledFooter style={{ display: 'flex', flexDirection: 'column' }}>
+      <Container>
+        <Flex>
+          <div style={{ flex: '1 1 0' }}>{logo}</div>
 
-            <div>
-              <Styled.h4>Categories</Styled.h4>
-              <ul className="footer-links">
-                <li>
-                  <Styled.a href="http://scanfcode.com/category/c-language/">
-                    C
-                  </Styled.a>
+          <div style={{ flex: '1 1 0' }}>
+            <Styled.h4>Pages</Styled.h4>
+            <ul>
+              {pages.map(({ path, name }) => (
+                <li key={path}>
+                  <Link to={path}>{name}</Link>
                 </li>
-                <li>
-                  <Styled.a href="http://scanfcode.com/category/front-end-development/">
-                    UI Design
-                  </Styled.a>
-                </li>
-                <li>
-                  <Styled.a href="http://scanfcode.com/category/back-end-development/">
-                    PHP
-                  </Styled.a>
-                </li>
-                <li>
-                  <Styled.a href="http://scanfcode.com/category/java-programming-language/">
-                    Java
-                  </Styled.a>
-                </li>
-                <li>
-                  <Styled.a href="http://scanfcode.com/category/android/">
-                    Android
-                  </Styled.a>
-                </li>
-                <li>
-                  <Styled.a href="http://scanfcode.com/category/templates/">
-                    Templates
-                  </Styled.a>
-                </li>
-              </ul>
-            </div>
+              ))}
+            </ul>
+          </div>
 
-            <div>
-              <Styled.h4>Categories</Styled.h4>
-              <ul className="footer-links">
-                <li>
-                  <Styled.a href="http://scanfcode.com/about/">
-                    About Us
-                  </Styled.a>
+          <div style={{ flex: '1 1 0' }}>
+            <Styled.h4>Useful Link</Styled.h4>
+            <ul>
+              {usefulLinks.map(({ path, name }) => (
+                <li key={path}>
+                  <a href={path}>{name}</a>
                 </li>
-                <li>
-                  <Styled.a href="http://scanfcode.com/contact/">
-                    Contact Us
-                  </Styled.a>
-                </li>
-                <li>
-                  <Styled.a href="http://scanfcode.com/contribute-at-scanfcode/">
-                    Contribute
-                  </Styled.a>
-                </li>
-                <li>
-                  <Styled.a href="http://scanfcode.com/privacy-policy/">
-                    Privacy Policy
-                  </Styled.a>
-                </li>
-                <li>
-                  <Styled.a href="http://scanfcode.com/sitemap/">
-                    Sitemap
-                  </Styled.a>
-                </li>
-              </ul>
-            </div>
-          </Flex>
-          <hr />
-        </Container>
-        <Container>
-          <Flex>
-            <div className="col-md-8 col-sm-6 col-xs-12">
-              <p className="copyright-text">
-                Copyright &copy; 2017 All Rights Reserved by
-                <Styled.a href="#">Scanfcode</Styled.a>.
-              </p>
-            </div>
+              ))}
+            </ul>
+          </div>
 
-            <div className="col-md-4 col-sm-6 col-xs-12">
-              <ul className="social-icons">
-                <li>
-                  <Styled.a className="facebook" href="#">
-                    <i className="fa fa-facebook" />
-                  </Styled.a>
+          <div style={{ flex: '1 1 0' }}>
+            <Styled.h4>Social</Styled.h4>
+            <ul>
+              {socialLinks.map(({ icon, path, name }) => (
+                <li key={path}>
+                  <a href={path}>
+                    {name} {icon}
+                  </a>
                 </li>
-                <li>
-                  <Styled.a className="twitter" href="#">
-                    <i className="fa fa-twitter" />
-                  </Styled.a>
-                </li>
-                <li>
-                  <Styled.a className="dribbble" href="#">
-                    <i className="fa fa-dribbble" />
-                  </Styled.a>
-                </li>
-                <li>
-                  <Styled.a className="linkedin" href="#">
-                    <i className="fa fa-linkedin" />
-                  </Styled.a>
-                </li>
-              </ul>
-            </div>
-          </Flex>
-        </Container>
-      </Flex>
+              ))}
+            </ul>
+          </div>
+        </Flex>
+        <hr />
+      </Container>
+      <Container>
+        <p style={{ textAlign: 'center' }}>{copyright}</p>
+      </Container>
     </StyledFooter>
   );
+};
+
+const Footer = () => {
+  const data = {
+    logo: <div style={{ background: 'red', width: '20px', height: '20px' }} />,
+    description: 'This is the best podcast ever!',
+    pages: [{ path: '/', name: 'home' }, { path: '/about', name: 'about' }],
+    usefulLinks: [
+      { path: 'https://anchor.fm/the-es-podcast', name: 'Anchor' },
+      {
+        path: 'https://github.com/EmaSuriano/gatsby-theme-anchor',
+        name: 'Github',
+      },
+    ],
+    socialLinks: [
+      { icon: 'facebook', name: 'Facebook', path: 'facebook.com' },
+      { icon: 'twitter', name: 'twitter', path: 'twitter.com' },
+    ],
+    copyright: 'This page was develop using gatsby-theme-anchor ❤',
+  };
+
+  return <FooterTemplate {...data} />;
 };
 
 export default Footer;
