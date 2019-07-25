@@ -1,14 +1,20 @@
 import React from 'react';
-import { AboutTemplate } from '../templates/About';
+import { AboutContent } from '../templates/About';
+import { LayoutMocked } from '../components/Layout';
+import CSSInjector from '../components/CSSInjector';
 
 const IndexPagePreview = ({ entry, widgetFor }) => {
   console.log(entry);
 
   return (
-    <AboutTemplate
-      title={entry.getIn(['data', 'title'])}
-      content={widgetFor('body')}
-    />
+    <CSSInjector>
+      <LayoutMocked>
+        <AboutContent
+          title={entry.getIn(['data', 'title'])}
+          content={widgetFor('body')}
+        />
+      </LayoutMocked>
+    </CSSInjector>
   );
 };
 

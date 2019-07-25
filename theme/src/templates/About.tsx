@@ -8,7 +8,7 @@ type Props = {
   content: string;
 };
 
-export const AboutTemplate = ({ title, content }: Props) => (
+export const AboutContent = ({ title, content }: Props) => (
   <React.Fragment>
     <h1>{title}</h1>
     <div dangerouslySetInnerHTML={{ __html: content }} />
@@ -45,7 +45,7 @@ const About = () => {
 
   return (
     <Layout>
-      <AboutTemplate
+      <AboutContent
         title={about.childMarkdownRemark.frontmatter.title}
         content={about.childMarkdownRemark.html}
       />
