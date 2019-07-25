@@ -45,6 +45,10 @@ export default {
       paddingBottom: 3,
       paddingTop: 3,
     },
+    Footer: {
+      backgroundColor: 'primary',
+      color: 'background',
+    },
     h1: {
       color: 'text',
       fontSize: 5,
@@ -52,6 +56,13 @@ export default {
     },
     ul: {
       padding: 0,
+    },
+    li: {
+      padding: 0,
+    },
+    a: {
+      color: 'inherit',
+      textDecoration: 'none',
     },
   },
 };

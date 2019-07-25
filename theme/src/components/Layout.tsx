@@ -1,7 +1,8 @@
 import React, { ReactNode, ReactComponentElement } from 'react';
 import { css, Global } from '@emotion/core';
-import { Layout as StyledLayout, Main, Container, Footer } from 'theme-ui';
+import { Layout as StyledLayout, Main, Container } from 'theme-ui';
 import Hero from './Hero';
+import Footer from './Footer';
 import Header, { HeaderTemplate } from './Header';
 
 const globalStyles = css`
@@ -31,9 +32,7 @@ export const LayoutMocked = ({ children, heroContent }: Props) => {
       <Main>
         <Container>{children}</Container>
       </Main>
-      <Footer>
-        <span>Is this footer really goes down?</span>
-      </Footer>
+      <Footer />
     </StyledLayout>
   );
 };
@@ -47,9 +46,7 @@ const Layout = ({ children, heroContent }: Props) => {
       <Main>
         <Container>{children}</Container>
       </Main>
-      <Footer>
-        <span>Is this footer really goes down?</span>
-      </Footer>
+      <Footer />
     </StyledLayout>
   );
 };
