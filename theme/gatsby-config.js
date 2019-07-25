@@ -1,31 +1,33 @@
 const fs = require('fs');
 const YAML = require('yaml');
 
-const CMS_LOCAL_FOLDER = `${__dirname}/src/cms`;
+const SRC_PATH = __dirname;
+const CONFIG_PATH = '/static';
+const CMS_DATA = '/src/cms';
 
-const writeConfigFile = cmsClientConfig => {
-  const file = fs.readFileSync(`${CMS_LOCAL_FOLDER}/config.yml`, 'utf8');
+const writeConfigFile = clientPath => {
+  const file = fs.readFileSync(`${SRC_PATH}/${CONFIG_PATH}/config.yml`, 'utf8');
   const config = YAML.parse(file);
 
   fs.writeFileSync(
-    `${CMS_LOCAL_FOLDER}/config.ts`,
+    `${SRC_PATH}/${CMS_DATA}/config.ts`,
     'export default ' + JSON.stringify(config),
   );
 
   fs.copyFileSync(
-    `${CMS_LOCAL_FOLDER}/config.yml`,
-    `${cmsClientConfig}/config.yml`,
+    `${SRC_PATH}/${CONFIG_PATH}/config.yml`,
+    `${clientPath}/${CONFIG_PATH}/config.yml`,
   );
 };
 
-module.exports = ({ anchorRss, cmsFolder, cmsClientConfig }) => {
+module.exports = ({ anchorRss, path: clientPath }) => {
   if (!anchorRss) {
     throw new Error(
       'anchorRss not defined inside the options of `gatbsy-theme-anchor`',
     );
   }
 
-  writeConfigFile(cmsClientConfig);
+  writeConfigFile(clientPath);
 
   return {
     siteMetadata: {
@@ -38,7 +40,7 @@ module.exports = ({ anchorRss, cmsFolder, cmsClientConfig }) => {
         resolve: 'gatsby-plugin-netlify-cms',
         options: {
           manualInit: true,
-          modulePath: CMS_LOCAL_FOLDER,
+          modulePath: `${SRC_PATH}/${CMS_DATA}`,
         },
       },
       {
@@ -50,7 +52,7 @@ module.exports = ({ anchorRss, cmsFolder, cmsClientConfig }) => {
       {
         resolve: 'gatsby-source-filesystem',
         options: {
-          path: `${cmsFolder}`,
+          path: `${clientPath}/${CMS_DATA}`,
           name: 'data',
         },
       },
