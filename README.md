@@ -1,12 +1,12 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/d472f990-9300-4406-a5a0-388ca0662966/deploy-status)](https://app.netlify.com/sites/gatsby-theme-anchor/deploys)
 
-# Gatsby Theme Anchor
+# gatsby-theme-anchor
 
-**This theme is not ready yet, therefore it's not ready for production.**
+**⚠️️️️️️⚠️This theme is still in development, avoid using it for production. ⚠️️⚠️**
 
 <p align="center">
   <a href="https://gatsby-theme-anchor.netlify.com/">
-    <img src="./media/cover.jpeg" alt="Cover" />
+    <img src="./docs/cover.jpeg" alt="Cover" />
   </a>
   <br />
   <i>

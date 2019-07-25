@@ -5,6 +5,66 @@ import { Header as StyledHeader, Flex, Styled, useThemeUI } from 'theme-ui';
 import { Podcast } from '../types/Anchor';
 import { SitePage } from '../types/Gatsby';
 import { Location } from '@reach/router';
+import styled from 'styled-components';
+
+type PageRoute = {
+  path: string;
+  context: {
+    name: string;
+  };
+};
+
+type HeaderProps = {
+  title: string;
+  transparentHeader: boolean;
+  pages: PageRoute[];
+  currentPath?: string;
+};
+
+const HomeLink = styled(Link)`
+  color: red;
+  text-decoration: none;
+`;
+
+export const HeaderTemplate = ({
+  title,
+  transparentHeader,
+  pages,
+  currentPath,
+}: HeaderProps) => (
+  <ReactHeadroom>
+    <StyledHeader
+      {...transparentHeader && {
+        style: {
+          background: 'transparent',
+        },
+      }}
+    >
+      <Flex
+        style={{
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          width: '100%',
+        }}
+      >
+        <HomeLink to="/">
+          <Styled.h2>{title}</Styled.h2>
+        </HomeLink>
+
+        <Styled.ul>
+          {pages.map(({ path, context }) => (
+            <PageLink
+              route={path}
+              name={context.name}
+              selected={path === currentPath}
+              key={path}
+            />
+          ))}
+        </Styled.ul>
+      </Flex>
+    </StyledHeader>
+  </ReactHeadroom>
+);
 
 type LayoutQuery = {
   podcast: Podcast;
@@ -48,7 +108,7 @@ type Props = {
 };
 
 const Header = ({ transparentHeader }: Props) => {
-  const data = useStaticQuery<LayoutQuery>(graphql`
+  const { podcast, pages } = useStaticQuery<LayoutQuery>(graphql`
     query HeaderQuery {
       podcast: anchorPodcast {
         title
@@ -64,51 +124,18 @@ const Header = ({ transparentHeader }: Props) => {
       }
     }
   `);
-  const { podcast, pages } = data;
-  return (
-    <ReactHeadroom>
-      <StyledHeader
-        {...transparentHeader && {
-          style: {
-            background: 'transparent',
-          },
-        }}
-      >
-        <Flex
-          style={{
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            width: '100%',
-          }}
-        >
-          <Link
-            style={{
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-            to="/"
-          >
-            <Styled.h2>{podcast.title}</Styled.h2>
-          </Link>
 
-          <Styled.ul>
-            <Location>
-              {({ location }) => {
-                const currentPage = location.pathname;
-                return pages.nodes.map(page => (
-                  <PageLink
-                    route={page.path}
-                    name={page.context.name}
-                    selected={page.path === currentPage}
-                    key={page.id}
-                  />
-                ));
-              }}
-            </Location>
-          </Styled.ul>
-        </Flex>
-      </StyledHeader>
-    </ReactHeadroom>
+  return (
+    <Location>
+      {({ location }) => (
+        <HeaderTemplate
+          transparentHeader={transparentHeader}
+          currentPath={location.pathname}
+          pages={pages.nodes}
+          title={podcast.title}
+        />
+      )}
+    </Location>
   );
 };
 

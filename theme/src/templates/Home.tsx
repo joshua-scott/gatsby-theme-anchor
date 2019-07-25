@@ -6,15 +6,24 @@ import Episode from '../components/Episode';
 import { graphql, useStaticQuery } from 'gatsby';
 import * as AnchorTypes from '../types/Anchor';
 
-const useHomeQuery = () => {
-  type HomeQuery = {
-    latestEpisodes: {
-      nodes: AnchorTypes.Episode[];
-    };
-    podcast: AnchorTypes.Podcast;
+type HomeQuery = {
+  latestEpisodes: {
+    nodes: AnchorTypes.Episode[];
   };
+  podcast: AnchorTypes.Podcast;
+};
 
-  return useStaticQuery<HomeQuery>(graphql`
+export const HomeTemplate = ({ podcast, latestEpisodes }: HomeQuery) => (
+  <Layout heroContent={<Banner {...podcast} />}>
+    <Styled.h1>Latest episodes</Styled.h1>
+    {latestEpisodes.nodes.map(episode => (
+      <Episode key={episode.id} {...episode} />
+    ))}
+  </Layout>
+);
+
+const Home = () => {
+  const data = useStaticQuery<HomeQuery>(graphql`
     query HomeQuery {
       latestEpisodes: allAnchorEpisode(limit: 3) {
         nodes {
@@ -48,19 +57,8 @@ const useHomeQuery = () => {
       }
     }
   `);
-};
 
-const Home = () => {
-  const { podcast, latestEpisodes } = useHomeQuery();
-
-  return (
-    <Layout heroContent={<Banner {...podcast} />}>
-      <Styled.h1>Latest episodes</Styled.h1>
-      {latestEpisodes.nodes.map(episode => (
-        <Episode key={episode.id} {...episode} />
-      ))}
-    </Layout>
-  );
+  return <HomeTemplate {...data} />;
 };
 
 export default Home;
