@@ -19,7 +19,7 @@ const config = {
         {
           label: 'Index',
           name: 'index',
-          file: 'cms/about.md',
+          file: 'static/about.md',
           fields: [
             {
               label: 'Template Key',
