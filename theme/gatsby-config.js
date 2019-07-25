@@ -33,6 +33,7 @@ module.exports = ({ anchorRss, cmsFolder }) => {
         },
       },
       'gatsby-transformer-remark',
+      'gatsby-plugin-emotion',
     ],
   };
 };

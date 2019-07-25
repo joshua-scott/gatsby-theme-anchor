@@ -1,7 +1,7 @@
-// import CMS from 'netlify-cms-app';
-// import IndexPagePreview from './index-page-preview';
+import CMS from 'netlify-cms-app';
+import IndexPagePreview from './index-page-preview';
 
-// CMS.registerPreviewTemplate('index', IndexPagePreview);
+CMS.registerPreviewTemplate('index', IndexPagePreview);
 
 const config = {
   backend: {
