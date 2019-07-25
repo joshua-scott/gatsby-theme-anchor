@@ -21,16 +21,36 @@
 
 ## Motivation
 
+When a podcast starts the most difficult part is sharing it with the rest of world, this Gatsby Theme will help to solve that! The idea behind it is to provide a customizable platform where the content creators can:
+
+- Have a [Landing page](###Landing) with the last episodes of the show and more relevant information.
+- Add information about the show inside the [About Page](###About)
+- Showcase all the podcast inside the [Podcast Page](###Podcast)
+- Post rich content news (using Markdown) inside [News Page](###News)
+- Possibility to add/edit/remove content using a [CMS view](###CMS)
+
 ## Features 🤹
 
 - Typescript
 - CSS in JS
 - Theming
 - Anchor integration
+- Netlify CMS integration
+- Provide a das
 
 ## How to Start
 
 ## Screenshot and Design
+
+### Landing
+
+### About
+
+### Podcast
+
+### News
+
+### CMS
 
 ## Deploying your site
 
