@@ -3,15 +3,13 @@ import { AboutContent } from '../templates/About';
 import { LayoutMocked } from '../components/Layout';
 import CSSInjector from '../components/CSSInjector';
 
-const IndexPagePreview = ({ entry, widgetFor }) => {
-  console.log(entry);
-
+const IndexPagePreview = ({ entry }) => {
   return (
     <CSSInjector>
       <LayoutMocked>
         <AboutContent
           title={entry.getIn(['data', 'title'])}
-          content={widgetFor('body')}
+          content={entry.getIn(['data', 'body'])}
         />
       </LayoutMocked>
     </CSSInjector>

@@ -1,6 +1,10 @@
 import CMS from 'netlify-cms-app';
-import config from './config';
 import FileSystemBackend from 'netlify-cms-backend-fs';
+import config from './config';
+import IndexPagePreview from './index-page-preview';
+
+// @ts-ignore
+config.load_config_file = false;
 
 if (process.env.NODE_ENV === 'development') {
   config.backend = {
@@ -14,4 +18,5 @@ if (process.env.NODE_ENV === 'development') {
   CMS.registerBackend('file-system', FileSystemBackend);
 }
 
+CMS.registerPreviewTemplate('index', IndexPagePreview);
 CMS.init({ config });

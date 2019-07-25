@@ -1,9 +1,31 @@
-module.exports = ({ anchorRss, cmsFolder }) => {
+const fs = require('fs');
+const YAML = require('yaml');
+
+const CMS_LOCAL_FOLDER = `${__dirname}/src/cms`;
+
+const writeConfigFile = cmsClientConfig => {
+  const file = fs.readFileSync(`${CMS_LOCAL_FOLDER}/config.yml`, 'utf8');
+  const config = YAML.parse(file);
+
+  fs.writeFileSync(
+    `${CMS_LOCAL_FOLDER}/config.ts`,
+    'export default ' + JSON.stringify(config),
+  );
+
+  fs.copyFileSync(
+    `${CMS_LOCAL_FOLDER}/config.yml`,
+    `${cmsClientConfig}/config.yml`,
+  );
+};
+
+module.exports = ({ anchorRss, cmsFolder, cmsClientConfig }) => {
   if (!anchorRss) {
     throw new Error(
       'anchorRss not defined inside the options of `gatbsy-theme-anchor`',
     );
   }
+
+  writeConfigFile(cmsClientConfig);
 
   return {
     siteMetadata: {
@@ -16,7 +38,7 @@ module.exports = ({ anchorRss, cmsFolder }) => {
         resolve: 'gatsby-plugin-netlify-cms',
         options: {
           manualInit: true,
-          modulePath: `${__dirname}/src/cms`,
+          modulePath: CMS_LOCAL_FOLDER,
         },
       },
       {
