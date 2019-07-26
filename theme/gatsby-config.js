@@ -39,6 +39,7 @@ module.exports = ({ anchorRss, path: clientPath }) => {
       {
         resolve: 'gatsby-plugin-netlify-cms',
         options: {
+          manualInit: true,
           modulePath: `${SRC_PATH}/${CMS_DATA}`,
         },
       },
