@@ -9,10 +9,10 @@ type Props = {
 };
 
 export const AboutContent = ({ title, content }: Props) => (
-  <React.Fragment>
+  <div>
     <h1>{title}</h1>
     <ReactMarkdown source={content} />
-  </React.Fragment>
+  </div>
 );
 
 type AboutQuery = {

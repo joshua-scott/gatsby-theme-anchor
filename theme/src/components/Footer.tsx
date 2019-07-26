@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import { Footer as StyledFooter, Container, Flex, Box, Styled } from 'theme-ui';
+import { Flex } from 'rebass';
 import { PageLink, SocialLink } from '../types/Link';
 import { footer } from '../mocks/Components';
+import styled from 'styled-components';
 
 export type FooterProps = {
   logo: React.ReactNode;
@@ -13,6 +14,18 @@ export type FooterProps = {
   copyright: string;
 };
 
+const Container = styled.div`
+  padding: 0;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  max-width: 650px;
+  margin: auto;
+`;
+
+const StyledFooter = styled.footer`
+  background: ${props => props.theme.colors.secondary};
+`;
+
 export const FooterTemplate = ({
   logo,
   description,
@@ -22,7 +35,7 @@ export const FooterTemplate = ({
   copyright,
 }: FooterProps) => {
   return (
-    <StyledFooter style={{ display: 'flex', flexDirection: 'column' }}>
+    <StyledFooter>
       <Container>
         <Flex>
           <div style={{ flex: '1 1 0' }}>
@@ -31,7 +44,7 @@ export const FooterTemplate = ({
           </div>
 
           <div style={{ flex: '1 1 0' }}>
-            <Styled.h4>Pages</Styled.h4>
+            <h4>Pages</h4>
             <ul>
               {pages.map(({ path, name }) => (
                 <li key={path}>
@@ -42,7 +55,7 @@ export const FooterTemplate = ({
           </div>
 
           <div style={{ flex: '1 1 0' }}>
-            <Styled.h4>Useful Link</Styled.h4>
+            <h4>Useful Link</h4>
             <ul>
               {usefulLinks.map(({ path, name }) => (
                 <li key={path}>
@@ -53,7 +66,7 @@ export const FooterTemplate = ({
           </div>
 
           <div style={{ flex: '1 1 0' }}>
-            <Styled.h4>Social</Styled.h4>
+            <h4>Social</h4>
             <ul>
               {socialLinks.map(({ icon, path, name }) => (
                 <li key={path}>

@@ -26,8 +26,6 @@ const HeaderContainer = styled(ReactHeadroom)`
   .headroom--pinned {
     background: ${props => props.theme.colors.primary};
   }
-  position: absolute;
-  width: 100%;
   background: ${props =>
     props.transparent ? 'transparent' : props.theme.colors.primary};
 `;
