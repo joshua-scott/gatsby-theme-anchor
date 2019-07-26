@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import ReactHeadroom from 'react-headroom';
 import { graphql, useStaticQuery, Link } from 'gatsby';
-import { Header as StyledHeader, Flex, Styled } from 'theme-ui';
+import { Flex } from 'rebass';
 import { Podcast } from '../types/Anchor';
 import { SitePage } from '../types/Gatsby';
 import { Location } from '@reach/router';
 import styled from 'styled-components';
 import { PageLink as PageLinkType } from '../types/Link';
-import PageLink from './PageLink';
+import LinkList from './LinkList';
+import { AppContext } from './MockWrapper';
 
 export type HeaderProps = {
   title: string;
@@ -17,8 +18,18 @@ export type HeaderProps = {
 };
 
 const HomeLink = styled(Link)`
-  color: red;
+  color: ${props => props.theme.colors.invertText};
   text-decoration: none;
+`;
+
+const HeaderContainer = styled(ReactHeadroom)`
+  .headroom--pinned {
+    background: ${props => props.theme.colors.primary};
+  }
+  position: absolute;
+  width: 100%;
+  background: ${props =>
+    props.transparent ? 'transparent' : props.theme.colors.primary};
 `;
 
 export const HeaderTemplate = ({
@@ -27,38 +38,15 @@ export const HeaderTemplate = ({
   pages,
   currentPath,
 }: HeaderProps) => (
-  <ReactHeadroom>
-    <StyledHeader
-      {...transparentHeader && {
-        style: {
-          background: 'transparent',
-        },
-      }}
-    >
-      <Flex
-        style={{
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          width: '100%',
-        }}
-      >
-        <HomeLink to="/">
-          <Styled.h2>{title}</Styled.h2>
-        </HomeLink>
+  <HeaderContainer transparent={transparentHeader}>
+    <Flex justifyContent="space-between" alignItems="center" px={2}>
+      <HomeLink to="/">
+        <h2>{title}</h2>
+      </HomeLink>
 
-        <Styled.ul>
-          {pages.map(({ path, name }) => (
-            <PageLink
-              route={path}
-              name={name}
-              selected={path === currentPath}
-              key={path}
-            />
-          ))}
-        </Styled.ul>
-      </Flex>
-    </StyledHeader>
-  </ReactHeadroom>
+      <LinkList direction="vertical" links={pages} selected={currentPath} />
+    </Flex>
+  </HeaderContainer>
 );
 
 type LayoutQuery = {
@@ -108,4 +96,10 @@ const Header = ({ transparentHeader }: Props) => {
   );
 };
 
-export default Header;
+const SmartHeader = (props: Props) => {
+  const { mocked, mocks } = useContext(AppContext);
+
+  return mocked ? <HeaderTemplate {...mocks.header} /> : <Header {...props} />;
+};
+
+export default SmartHeader;

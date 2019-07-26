@@ -2,15 +2,16 @@ import React from 'react';
 import { HeaderProps } from '../components/Header';
 import { FooterProps } from '../components/Footer';
 
-export const headerPropsMock: HeaderProps = {
+export const header: HeaderProps = {
   title: 'CMS Preview',
   pages: [
     { name: 'Page 1', path: '/page-1' },
     { name: 'Page 2', path: '/page-2' },
   ],
+  currentPath: '/page-1',
 };
 
-export const footerPropsMock: FooterProps = {
+export const footer: FooterProps = {
   logo: <div style={{ background: 'red', width: '20px', height: '20px' }} />,
   description: 'This is the best podcast ever!',
   pages: [{ path: '/', name: 'home' }, { path: '/about', name: 'about' }],

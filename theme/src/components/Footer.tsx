@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 import { Footer as StyledFooter, Container, Flex, Box, Styled } from 'theme-ui';
 import { PageLink, SocialLink } from '../types/Link';
-import { footerPropsMock } from '../mocks/Components';
+import { footer } from '../mocks/Components';
 
 export type FooterProps = {
   logo: React.ReactNode;
@@ -75,7 +75,7 @@ export const FooterTemplate = ({
 };
 
 const Footer = () => {
-  return <FooterTemplate {...footerPropsMock} />;
+  return <FooterTemplate {...footer} />;
 };
 
 export default Footer;

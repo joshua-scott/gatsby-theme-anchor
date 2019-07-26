@@ -3,7 +3,7 @@ import { base } from '@theme-ui/presets';
 export default {
   colors: {
     text: '#232129',
-    invertText: '#fff',
+    altText: '#fff',
     background: '#fff',
     primary: '#663399',
     secondary: '#e0ba48',

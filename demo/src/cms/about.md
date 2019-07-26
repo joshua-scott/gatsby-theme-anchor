@@ -1,9 +1,12 @@
 ---
-title: 'This is great :D '
+title: About title!
 ---
+This is the description of the about section.
 
-asdasdasdasdasd
+Which is super powerful and can do crazy things, like **Markdown** 
 
-This is amazing too :D
+## Title
 
-## asdasd
+
+* asd 
+* qweqwe
