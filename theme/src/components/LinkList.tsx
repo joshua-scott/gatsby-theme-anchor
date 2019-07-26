@@ -3,6 +3,11 @@ import { Link } from 'gatsby';
 import { PageLink as PageLinkType } from '../types/Link';
 import styled from 'styled-components';
 
+function isUrlValid(str: string) {
+  var regex = /(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
+  return regex.test(str);
+}
+
 type PageLinkProps = {
   children: ReactNode;
   selected: boolean;
@@ -24,15 +29,19 @@ const StyledLink = styled.li<PageLinkProps>`
 
 type Props = {
   links: PageLinkType[];
-  direction: 'vertical' | 'horizontal';
-  selected: string;
+  direction?: 'vertical' | 'horizontal';
+  selected?: string;
 };
 
-const LinkList = ({ direction, links, selected }: Props) => (
+const LinkList = ({ direction = 'horizontal', links, selected }: Props) => (
   <ul>
     {links.map(({ path, name }) => (
       <StyledLink selected={path === selected} key={path}>
-        <Link to={path}>{name}</Link>
+        {isUrlValid(path) ? (
+          <a href={path}>{name}</a>
+        ) : (
+          <Link to={path}>{name}</Link>
+        )}
       </StyledLink>
     ))}
   </ul>

@@ -1,6 +1,7 @@
 import CMS from 'netlify-cms-app';
 import config from './config';
-import IndexPagePreview from './LandingPreviewTemplate';
+import AboutPreview from './AboutPreview';
+import LandingPreview from './LandingPreview';
 
 console.log('NODE_ENV', process.env.NODE_ENV);
 
@@ -19,5 +20,6 @@ if (process.env.NODE_ENV === 'development') {
   CMS.registerBackend('file-system', FileSystemBackend);
 }
 
-CMS.registerPreviewTemplate('about', IndexPagePreview);
+CMS.registerPreviewTemplate('about', AboutPreview);
+CMS.registerPreviewTemplate('landing', LandingPreview);
 CMS.init({ config });

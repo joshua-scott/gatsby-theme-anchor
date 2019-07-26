@@ -6,13 +6,14 @@ import ReactMarkdown from 'react-markdown';
 type Props = {
   title: string;
   content: string;
+  mocked: boolean;
 };
 
-export const AboutContent = ({ title, content }: Props) => (
-  <div>
+export const AboutTemplate = ({ title, content, mocked }: Props) => (
+  <Layout mocked={mocked}>
     <h1>{title}</h1>
     <ReactMarkdown source={content} />
-  </div>
+  </Layout>
 );
 
 type AboutQuery = {
@@ -44,12 +45,10 @@ const About = () => {
   const { about } = useAboutQuery<AboutQuery>();
 
   return (
-    <Layout>
-      <AboutContent
-        title={about.childMarkdownRemark.frontmatter.title}
-        content={about.childMarkdownRemark.rawMarkdownBody}
-      />
-    </Layout>
+    <AboutTemplate
+      title={about.childMarkdownRemark.frontmatter.title}
+      content={about.childMarkdownRemark.rawMarkdownBody}
+    />
   );
 };
 

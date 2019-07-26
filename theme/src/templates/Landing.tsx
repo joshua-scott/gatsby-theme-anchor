@@ -1,30 +1,28 @@
 import React from 'react';
 import Layout from '../components/Layout';
 import Banner from '../components/Banner';
-import { Styled } from 'theme-ui';
 import Episode from '../components/Episode';
 import { graphql, useStaticQuery } from 'gatsby';
 import * as AnchorTypes from '../types/Anchor';
 
-type HomeQuery = {
-  latestEpisodes: {
-    nodes: AnchorTypes.Episode[];
-  };
+type Props = {
+  latestEpisodes: AnchorTypes.Episode[];
   podcast: AnchorTypes.Podcast;
+  mocked?: boolean;
 };
 
-export const HomeTemplate = ({ podcast, latestEpisodes }: HomeQuery) => (
-  <Layout heroContent={<Banner {...podcast} />}>
-    <Styled.h1>Latest episodes</Styled.h1>
-    {latestEpisodes.nodes.map(episode => (
+export const LandingTemplate = ({ podcast, latestEpisodes, mocked }: Props) => (
+  <Layout mocked={mocked} heroContent={<Banner {...podcast} />}>
+    <h1>Latest episodes</h1>
+    {latestEpisodes.map(episode => (
       <Episode key={episode.id} {...episode} />
     ))}
   </Layout>
 );
 
-const Home = () => {
-  const data = useStaticQuery<HomeQuery>(graphql`
-    query HomeQuery {
+const Landing = () => {
+  const { podcast, latestEpisodes } = useStaticQuery(graphql`
+    query LandingQuery {
       latestEpisodes: allAnchorEpisode(limit: 3) {
         nodes {
           id
@@ -58,7 +56,9 @@ const Home = () => {
     }
   `);
 
-  return <HomeTemplate {...data} />;
+  return (
+    <LandingTemplate podcast={podcast} latestEpisodes={latestEpisodes.nodes} />
+  );
 };
 
-export default Home;
+export default Landing;

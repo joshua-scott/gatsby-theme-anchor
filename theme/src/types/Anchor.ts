@@ -13,12 +13,6 @@ export type Episode = {
   title: string;
   link: string;
   content: string;
-  itunes: {
-    image: string;
-    summary: string;
-    duration: number;
-    explicit: boolean;
-  };
   contentSnippet: string;
   publishedDate: string;
   enclosure: {

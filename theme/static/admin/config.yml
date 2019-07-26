@@ -11,7 +11,7 @@ collections:
     files:
       - file: 'src/cms/landing.md'
         label: 'Landing Page'
-        name: 'index'
+        name: 'landing'
         fields:
           - {
               label: 'Template Key',

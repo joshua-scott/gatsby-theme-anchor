@@ -97,7 +97,11 @@ const Header = ({ transparentHeader }: Props) => {
 const SmartHeader = (props: Props) => {
   const { mocked, mocks } = useContext(AppContext);
 
-  return mocked ? <HeaderTemplate {...mocks.header} /> : <Header {...props} />;
+  return mocked ? (
+    <HeaderTemplate {...mocks.header} {...props} />
+  ) : (
+    <Header {...props} />
+  );
 };
 
 export default SmartHeader;

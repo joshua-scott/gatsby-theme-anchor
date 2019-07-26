@@ -1,7 +1,7 @@
 exports.createPages = ({ actions, reporter }) => {
   actions.createPage({
     path: '/',
-    component: require.resolve('./src/templates/Home.tsx'),
+    component: require.resolve('./src/templates/Landing.tsx'),
   });
   actions.createPage({
     path: '/about',

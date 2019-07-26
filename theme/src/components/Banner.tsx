@@ -1,34 +1,42 @@
 import React from 'react';
-import { Styled, Flex } from 'theme-ui';
 import { Podcast } from '../types/Anchor';
+import styled from 'styled-components';
+import LinkList from './LinkList';
 
 type Props = Podcast;
 
+const StyledBanner = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  color: ${props => props.theme.colors.invertText};
+`;
+
+const LINKS = [
+  {
+    path: 'https://www.google.com/',
+    name: 'Anchor',
+  },
+  {
+    path: 'https://www.google.com/',
+    name: 'Spotify',
+  },
+  {
+    path: 'https://www.google.com/',
+    name: 'Pocket Cast',
+  },
+];
+
 const Banner = ({ title, description, image, link }: Props) => (
-  <Flex
-    style={{
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      width: '100%',
-    }}
-  >
+  <StyledBanner>
     <div>
-      <Styled.h1>{title}</Styled.h1>
-      <Styled.h2>{description}</Styled.h2>
-      <Styled.ul>
-        <PlatformLink link={link} name="Anchor" />
-        <PlatformLink link={link} name="Spotify" />
-        <PlatformLink link={link} name="Pocket Cast" />
-      </Styled.ul>
+      <h1>{title}</h1>
+      <h2>{description}</h2>
+      <LinkList links={LINKS} />
     </div>
     <img alt={image.title} src={image.url} style={{ width: '10em' }} />
-  </Flex>
-);
-
-const PlatformLink = ({ name, link }) => (
-  <Styled.li style={{ display: 'inline-block', margin: '0 10px' }}>
-    <Styled.a href={link}>Link to {name}</Styled.a>
-  </Styled.li>
+  </StyledBanner>
 );
 
 export default Banner;
