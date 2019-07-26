@@ -20,4 +20,5 @@ export type Episode = {
     type: string;
     length: string;
   };
+  itunes: any;
 };

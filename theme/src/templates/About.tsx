@@ -6,7 +6,7 @@ import ReactMarkdown from 'react-markdown';
 type Props = {
   title: string;
   content: string;
-  mocked: boolean;
+  mocked?: boolean;
 };
 
 export const AboutTemplate = ({ title, content, mocked }: Props) => (
