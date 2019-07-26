@@ -1,52 +1,48 @@
 import React, { ReactNode, ReactComponentElement } from 'react';
-import { css, Global } from '@emotion/core';
 import { Layout as StyledLayout, Main, Container } from 'theme-ui';
 import Hero from './Hero';
-import Footer from './Footer';
+import Footer, { FooterTemplate } from './Footer';
 import Header, { HeaderTemplate } from './Header';
+import { ThemeProvider } from 'styled-components';
+import theme from '../theme';
+import { footerPropsMock } from '../mocks/Components';
+import { createGlobalStyle } from 'styled-components';
 
-const globalStyles = css`
+const GlobalStyle = createGlobalStyle`
   body {
-    margin: 0;
+    margin: 0
   }
 `;
+
+const MockedHeader = props => (
+  <HeaderTemplate {...props} title="CMS Preview" pages={[]} />
+);
+
+const MockedFooter = props => (
+  <FooterTemplate {...props} {...footerPropsMock} />
+);
 
 type Props = {
   children: ReactNode;
   heroContent?: ReactNode;
+  mocked?: boolean;
 };
 
-export const LayoutMocked = ({ children, heroContent }: Props) => {
-  const header = (
-    <HeaderTemplate
-      transparentHeader={!!heroContent}
-      title="CMS Preview"
-      pages={[]}
-    />
-  );
+const Layout = ({ children, heroContent, mocked }: Props) => {
+  const HeaderComponent = mocked ? MockedHeader : Header;
+  const FooterComponent = mocked ? MockedFooter : Footer;
+
   return (
     <StyledLayout>
-      <Global styles={globalStyles} />
-      {heroContent ? <Hero header={header} content={heroContent} /> : header}
-
+      <GlobalStyle />
+      <Hero
+        header={<HeaderComponent transparentHeader={!!heroContent} />}
+        content={heroContent}
+      />
       <Main>
         <Container>{children}</Container>
       </Main>
-      <Footer />
-    </StyledLayout>
-  );
-};
-
-const Layout = ({ children, heroContent }: Props) => {
-  const header = <Header transparentHeader={!!heroContent} />;
-  return (
-    <StyledLayout>
-      <Global styles={globalStyles} />
-      {heroContent ? <Hero header={header} content={heroContent} /> : header}
-      <Main>
-        <Container>{children}</Container>
-      </Main>
-      <Footer />
+      <FooterComponent />
     </StyledLayout>
   );
 };

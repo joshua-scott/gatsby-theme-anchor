@@ -1,11 +1,11 @@
 import CMS from 'netlify-cms-app';
-import FileSystemBackend from 'netlify-cms-backend-fs';
 import config from './config';
 import IndexPagePreview from './index-page-preview';
 
 console.log('NODE_ENV', process.env.NODE_ENV);
 
 if (process.env.NODE_ENV === 'development') {
+  const FileSystemBackend = require('netlify-cms-backend-fs');
   config.backend = {
     name: 'file-system',
     // @ts-ignore

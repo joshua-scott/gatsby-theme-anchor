@@ -6,7 +6,10 @@ type Props = {
   content: ReactNode;
 };
 
-const HeroContainer = ({ header, content }: Props) => {
+const Hero = ({ header, content }: Props) => {
+  // typescript please ...
+  if (!content) return <React.Fragment>{header}</React.Fragment>;
+
   const { theme } = useThemeUI();
   return (
     <div style={{ background: theme.colors.secondary }}>
@@ -16,4 +19,4 @@ const HeroContainer = ({ header, content }: Props) => {
   );
 };
 
-export default HeroContainer;
+export default Hero;

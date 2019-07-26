@@ -1,23 +1,18 @@
 import React from 'react';
 import ReactHeadroom from 'react-headroom';
 import { graphql, useStaticQuery, Link } from 'gatsby';
-import { Header as StyledHeader, Flex, Styled, useThemeUI } from 'theme-ui';
+import { Header as StyledHeader, Flex, Styled } from 'theme-ui';
 import { Podcast } from '../types/Anchor';
 import { SitePage } from '../types/Gatsby';
 import { Location } from '@reach/router';
 import styled from 'styled-components';
+import { PageLink as PageLinkType } from '../types/Link';
+import PageLink from './PageLink';
 
-type PageRoute = {
-  path: string;
-  context: {
-    name: string;
-  };
-};
-
-type HeaderProps = {
+export type HeaderProps = {
   title: string;
-  transparentHeader: boolean;
-  pages: PageRoute[];
+  pages: PageLinkType[];
+  transparentHeader?: boolean;
   currentPath?: string;
 };
 
@@ -52,10 +47,10 @@ export const HeaderTemplate = ({
         </HomeLink>
 
         <Styled.ul>
-          {pages.map(({ path, context }) => (
+          {pages.map(({ path, name }) => (
             <PageLink
               route={path}
-              name={context.name}
+              name={name}
               selected={path === currentPath}
               key={path}
             />
@@ -73,36 +68,6 @@ type LayoutQuery = {
   };
 };
 
-type PageLinkProps = {
-  name: string;
-  selected: boolean;
-  route: string;
-};
-
-const PageLink = ({ name, selected, route }: PageLinkProps) => {
-  const { theme } = useThemeUI();
-  return (
-    <Styled.li
-      style={{
-        color: selected ? theme.colors.secondary : theme.colors.altText,
-        display: 'inline-block',
-        margin: '0 10px',
-      }}
-    >
-      <Styled.a
-        as={Link}
-        style={{
-          color: 'inherit',
-          textDecoration: 'none',
-        }}
-        to={route}
-      >
-        {name}
-      </Styled.a>
-    </Styled.li>
-  );
-};
-
 type Props = {
   transparentHeader?: boolean;
 };
@@ -115,7 +80,6 @@ const Header = ({ transparentHeader }: Props) => {
       }
       pages: allSitePage(filter: { context: { name: { ne: null } } }) {
         nodes {
-          id
           path
           context {
             name
@@ -125,13 +89,18 @@ const Header = ({ transparentHeader }: Props) => {
     }
   `);
 
+  const headerPages = pages.nodes.map(({ path, context }) => ({
+    path,
+    name: context.name,
+  }));
+
   return (
     <Location>
       {({ location }) => (
         <HeaderTemplate
           transparentHeader={transparentHeader}
           currentPath={location.pathname}
-          pages={pages.nodes}
+          pages={headerPages}
           title={podcast.title}
         />
       )}
