@@ -58,6 +58,7 @@ module.exports = ({ anchorRss, path: clientPath }) => {
       },
       'gatsby-transformer-remark',
       'gatsby-plugin-emotion',
+      'gatsby-plugin-styled-components',
     ],
   };
 };
