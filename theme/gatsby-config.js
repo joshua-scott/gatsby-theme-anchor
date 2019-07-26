@@ -2,7 +2,7 @@ const fs = require('fs');
 const YAML = require('yaml');
 
 const SRC_PATH = __dirname;
-const CONFIG_PATH = '/static';
+const CONFIG_PATH = '/static/admin';
 const CMS_DATA = '/src/cms';
 
 const writeConfigFile = clientPath => {
@@ -39,7 +39,6 @@ module.exports = ({ anchorRss, path: clientPath }) => {
       {
         resolve: 'gatsby-plugin-netlify-cms',
         options: {
-          manualInit: true,
           modulePath: `${SRC_PATH}/${CMS_DATA}`,
         },
       },

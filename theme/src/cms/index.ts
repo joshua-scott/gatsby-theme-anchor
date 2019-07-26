@@ -3,6 +3,8 @@ import FileSystemBackend from 'netlify-cms-backend-fs';
 import config from './config';
 import IndexPagePreview from './index-page-preview';
 
+console.log('NODE_ENV', process.env.NODE_ENV);
+
 if (process.env.NODE_ENV === 'development') {
   config.backend = {
     name: 'file-system',
