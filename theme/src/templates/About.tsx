@@ -1,7 +1,7 @@
 import React from 'react';
 import Layout from '../components/Layout';
 import { graphql, useStaticQuery } from 'gatsby';
-import * as AnchorTypes from '../types/Anchor';
+import ReactMarkdown from 'react-markdown';
 
 type Props = {
   title: string;
@@ -11,14 +11,14 @@ type Props = {
 export const AboutContent = ({ title, content }: Props) => (
   <React.Fragment>
     <h1>{title}</h1>
-    <div dangerouslySetInnerHTML={{ __html: content }} />
+    <ReactMarkdown source={content} />
   </React.Fragment>
 );
 
 type AboutQuery = {
   about: {
     childMarkdownRemark: {
-      html: string;
+      rawMarkdownBody: string;
       frontmatter: {
         title: string;
       };
@@ -31,7 +31,7 @@ const useAboutQuery = <T extends {}>() =>
     query AboutQuery {
       about: file(name: { eq: "about" }) {
         childMarkdownRemark {
-          html
+          rawMarkdownBody
           frontmatter {
             title
           }
@@ -47,7 +47,7 @@ const About = () => {
     <Layout>
       <AboutContent
         title={about.childMarkdownRemark.frontmatter.title}
-        content={about.childMarkdownRemark.html}
+        content={about.childMarkdownRemark.rawMarkdownBody}
       />
     </Layout>
   );
