@@ -17,7 +17,7 @@ const Container = styled.div`
 
 const HeroContainer = styled.div<{ background: string }>`
   background-image: url(${props => props.background});
-  background-color: ${props => props.theme.colors.invertText};
+  background-color: ${props => props.theme.colors.primary};
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

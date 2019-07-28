@@ -47,7 +47,7 @@ const Landing = () => {
             explicit
           }
           contentSnippet
-          publishedDate: isoDate(formatString: "MM/DD/YYYY")
+          publishedDate: isoDate(formatString: "DD MMM YYYY")
           enclosure {
             url
             type

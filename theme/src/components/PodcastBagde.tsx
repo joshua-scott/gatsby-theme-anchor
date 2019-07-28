@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledImg = styled.img`
-  width: 150px;
+  width: 125px;
 `;
 
 type Props = {

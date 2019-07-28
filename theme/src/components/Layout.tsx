@@ -37,8 +37,8 @@ const AppWrapper = styled.div`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: #fff;
-  color: #232129;
+  background: ${props => props.theme.colors.background};
+  color: ${props => props.theme.colors.text};
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
     Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
   font-size: 18px;

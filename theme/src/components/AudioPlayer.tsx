@@ -1,6 +1,7 @@
 import React from 'react';
-import { useThemeUI } from 'theme-ui';
 import AudioCard from 'audiocard';
+import { useContext } from 'react';
+import { ThemeContext } from 'styled-components';
 
 type Props = {
   url: string;
@@ -10,7 +11,7 @@ type Props = {
 };
 
 const AudioPlayer = ({ url, title, cover, link }: Props) => {
-  const { theme } = useThemeUI();
+  const theme = useContext(ThemeContext);
 
   return (
     <AudioCard
@@ -18,12 +19,11 @@ const AudioPlayer = ({ url, title, cover, link }: Props) => {
       title={title}
       skipBackSeconds={10}
       skipForwardSeconds={30}
-      background={theme.colors.background}
-      progressBarBackground={theme.colors.primary}
-      progressBarCompleteBackground={theme.colors.secondary}
-      color={theme.colors.text}
       art={cover}
       link={link}
+      color={theme.colors.text}
+      progressBarBackground={theme.colors.primaryLight}
+      progressBarCompleteBackground={theme.colors.primary}
       linkText="Link to Anchor"
     />
   );
