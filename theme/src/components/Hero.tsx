@@ -3,8 +3,7 @@ import styled from 'styled-components';
 import Header from './Header';
 import { Podcast } from '../types/Podcast';
 import LinkList from './LinkList';
-import { Text } from 'rebass';
-import { detectPodcastPlatform } from '../utils/link';
+import { Text, Image, Flex } from 'rebass';
 import PodcastBadge from './PodcastBagde';
 import Container from './Container';
 
@@ -14,6 +13,7 @@ const HeroContainer = styled.div<{ background: string }>`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  padding: ${props => props.theme.space[4]}px;
 `;
 
 const StyledBanner = styled.div`
@@ -29,7 +29,11 @@ const addPlatformName = (link: string) => ({
 });
 
 const Banner = ({ title, description, logo, podcastLinks = [] }: Podcast) => (
-  <StyledBanner>
+  <Flex
+    flexDirection={['column-reverse', 'row']}
+    justifyContent="space-between"
+    alignItems="center"
+  >
     <div>
       <Text fontSize={[5, 6]} fontWeight="bold" color="invertText">
         {title}
@@ -39,8 +43,8 @@ const Banner = ({ title, description, logo, podcastLinks = [] }: Podcast) => (
       </Text>
       <LinkList links={podcastLinks.map(addPlatformName)} />
     </div>
-    <img alt="Podcast logo" src={logo} style={{ width: '10em' }} />
-  </StyledBanner>
+    <Image alt="Podcast logo" src={logo} width={250} m={2} />
+  </Flex>
 );
 
 type Props = {

@@ -37,8 +37,8 @@ export const FooterTemplate = ({
   return (
     <Box as="footer" backgroundColor="secondary" p={3}>
       <Container>
-        <Flex>
-          <Box width={[1 / 4]}>
+        <Flex flexWrap="wrap">
+          <Box width={[1, 1 / 4]}>
             <Text color="invertText" fontWeight="bold">
               {name}
             </Text>
@@ -47,14 +47,14 @@ export const FooterTemplate = ({
             </Text>
           </Box>
 
-          <Box width={[1 / 4]}>
+          <Box width={[1 / 3, 1 / 4]}>
             <Text color="invertText" fontWeight="bold">
               Pages
             </Text>
             <LinkList links={pages} direction="vertical" />
           </Box>
 
-          <Box width={[1 / 4]}>
+          <Box width={[1 / 3, 1 / 4]}>
             <Text color="invertText" fontWeight="bold">
               Podcast links
             </Text>
@@ -64,7 +64,7 @@ export const FooterTemplate = ({
             />
           </Box>
 
-          <Box width={[1 / 4]}>
+          <Box width={[1 / 3, 1 / 4]}>
             <Text color="invertText" fontWeight="bold">
               Social
             </Text>
