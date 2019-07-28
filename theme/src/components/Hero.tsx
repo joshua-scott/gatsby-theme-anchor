@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Header from './Header';
 import { Podcast } from '../types/Podcast';
 import LinkList from './LinkList';
-import { Text, Image, Flex } from 'rebass';
+import { Text, Image, Flex, Heading } from 'rebass';
 import PodcastBadge from './PodcastBagde';
 import Container from './Container';
 
@@ -35,12 +35,12 @@ const Banner = ({ title, description, logo, podcastLinks = [] }: Podcast) => (
     alignItems="center"
   >
     <div>
-      <Text fontSize={[5, 6]} fontWeight="bold" color="invertText">
+      <Heading fontSize={[5, 6]} color="invertText">
         {title}
-      </Text>
-      <Text fontSize={[4, 5]} fontWeight="bold" color="invertText">
+      </Heading>
+      <Heading fontSize={[4, 5]} color="invertText">
         {description}
-      </Text>
+      </Heading>
       <LinkList links={podcastLinks.map(addPlatformName)} />
     </div>
     <Image alt="Podcast logo" src={logo} width={250} m={2} />

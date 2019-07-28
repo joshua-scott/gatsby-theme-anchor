@@ -9,13 +9,16 @@ type PageLinkProps = {
   selected: boolean;
 };
 
-const StyledLink = styled.li<PageLinkProps>`
+const StyledLink = styled.li<PageLinkProps & { direction: string }>`
   color: ${props =>
     props.selected
       ? props.theme.colors.secondary
       : props.theme.colors.invertText};
   display: inline-block;
-  margin: ${props => props.theme.space[1]}px;
+  ${props =>
+    props.direction === 'horizontal'
+      ? `margin: 0 ${props.theme.space[2]}px;`
+      : `margin: ${props.theme.space[1]}px 0;`}
 
   & a {
     color: inherit;
@@ -48,7 +51,11 @@ const LinkList = ({ direction = 'horizontal', links, selected }: Props) => (
       const content = typeof name === 'string' ? name.toUpperCase() : name;
 
       return (
-        <StyledLink selected={path === selected} key={path}>
+        <StyledLink
+          selected={path === selected}
+          key={path}
+          direction={direction}
+        >
           {isExternalUrl(path) ? (
             <a href={path}>{content}</a>
           ) : (

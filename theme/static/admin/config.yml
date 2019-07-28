@@ -98,5 +98,9 @@ collections:
               label: 'Authors',
               name: 'authors',
               widget: 'list',
-              fields: [{ label: 'Name', name: 'name', widget: 'string' }],
+              fields:
+                [
+                  { label: 'Name', name: 'name', widget: string },
+                  { label: 'Picture', name: 'picture', widget: image },
+                ],
             }

@@ -3,6 +3,7 @@ import Layout from '../components/Layout';
 import { graphql, useStaticQuery } from 'gatsby';
 import ReactMarkdown from 'react-markdown';
 import { About as AboutType } from '../types/Cms';
+import { Text, Heading } from 'rebass';
 
 type Props = AboutType & {
   mocked?: boolean;
@@ -10,7 +11,8 @@ type Props = AboutType & {
 
 export const AboutTemplate = ({ title, content, mocked }: Props) => (
   <Layout mocked={mocked}>
-    <h1>{title}</h1>
+    <Heading>{title}</Heading>
+
     <ReactMarkdown source={content} />
   </Layout>
 );
