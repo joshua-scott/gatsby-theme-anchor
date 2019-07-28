@@ -3,8 +3,6 @@ import config from './config';
 import AboutPreview from './AboutPreview';
 import LandingPreview from './LandingPreview';
 
-console.log('NODE_ENV', process.env.NODE_ENV);
-
 if (process.env.NODE_ENV === 'development') {
   const FileSystemBackend = require('netlify-cms-backend-fs');
   config.backend = {

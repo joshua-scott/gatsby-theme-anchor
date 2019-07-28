@@ -15,7 +15,7 @@ const Episode = ({ title, link, publishedDate, itunes, enclosure }: Props) => {
   const theme = useContext(ThemeContext);
   return (
     <Card
-      width={[1, 1, 1 / 2]}
+      m={3}
       p={4}
       bg="white"
       borderRadius={6}
@@ -27,15 +27,10 @@ const Episode = ({ title, link, publishedDate, itunes, enclosure }: Props) => {
         </Text>
         <Text fontWeight="bold">{publishedDate}</Text>
       </Flex>
-      <Box my={3}>
-        <AudioPlayer
-          url={enclosure.url}
-          title={title}
-          cover={itunes.image}
-          link={link}
-        />
-      </Box>
       <StyledSummary dangerouslySetInnerHTML={{ __html: itunes.summary }} />
+      <Box my={3}>
+        <AudioPlayer url={enclosure.url} link={link} />
+      </Box>
     </Card>
   );
 };

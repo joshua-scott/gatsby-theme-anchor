@@ -42,7 +42,7 @@ export const HeaderTemplate = ({
         <h2>{title}</h2>
       </HomeLink>
 
-      <LinkList direction="vertical" links={pages} selected={currentPath} />
+      <LinkList links={pages} selected={currentPath} />
     </Flex>
   </HeaderContainer>
 );

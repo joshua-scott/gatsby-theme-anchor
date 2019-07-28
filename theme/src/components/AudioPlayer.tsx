@@ -5,7 +5,7 @@ import { ThemeContext } from 'styled-components';
 
 type Props = {
   url: string;
-  title: string;
+  title?: string;
   cover?: string;
   link?: string;
 };

@@ -3,17 +3,10 @@ import styled from 'styled-components';
 import Header from './Header';
 import { Podcast } from '../types/Podcast';
 import LinkList from './LinkList';
-import { Text, Flex } from 'rebass';
-import { detectPodcastPlatform } from '../utils/linkDetector';
+import { Text } from 'rebass';
+import { detectPodcastPlatform } from '../utils/link';
 import PodcastBadge from './PodcastBagde';
-
-const Container = styled.div`
-  padding: 0;
-  padding-bottom: 10px;
-  padding-top: 10px;
-  max-width: 850px;
-  margin: auto;
-`;
+import Container from './Container';
 
 const HeroContainer = styled.div<{ background: string }>`
   background-image: url(${props => props.background});
@@ -32,7 +25,7 @@ const StyledBanner = styled.div`
 
 const addPlatformName = (link: string) => ({
   path: link,
-  name: <PodcastBadge platform={detectPodcastPlatform(link)} />,
+  name: <PodcastBadge link={link} />,
 });
 
 const Banner = ({ title, description, logo, podcastLinks = [] }: Podcast) => (

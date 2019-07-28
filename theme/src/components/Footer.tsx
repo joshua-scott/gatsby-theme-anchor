@@ -1,94 +1,156 @@
-import React from 'react';
-import { Link } from 'gatsby';
-import { Flex } from 'rebass';
+import React, { useContext, ReactNode } from 'react';
+import { Flex, Text, Box, Link } from 'rebass';
 import { PageLink, SocialLink } from '../types/Link';
-import { footer } from '../mocks/Components';
-import styled from 'styled-components';
+import Container from './Container';
+import { AppContext } from './MockWrapper';
+import LinkList from './LinkList';
+import { useStaticQuery, graphql } from 'gatsby';
+import { normalizeName } from '../utils/string';
+import { detectPodcastPlatform } from '../utils/link';
+import SocialIcon from './SocialIcon';
 
 export type FooterProps = {
-  logo: React.ReactNode;
+  name: string;
   description: string;
   pages: PageLink[];
-  usefulLinks: PageLink[];
-  socialLinks: SocialLink[];
-  copyright: string;
+  podcastLinks?: string[];
+  socialLinks?: string[];
 };
 
-const Container = styled.div`
-  padding: 0;
-  padding-bottom: 10px;
-  padding-top: 10px;
-  max-width: 650px;
-  margin: auto;
-`;
+const addPlatformName = (link: string) => ({
+  path: link,
+  name: normalizeName(detectPodcastPlatform(link)),
+});
 
-const StyledFooter = styled.footer`
-  background: ${props => props.theme.colors.secondary};
-`;
+const addSocialIcon = (link: string) => ({
+  path: link,
+  name: <SocialIcon link={link} />,
+});
 
 export const FooterTemplate = ({
-  logo,
+  name,
   description,
   pages,
-  usefulLinks,
-  socialLinks,
-  copyright,
+  podcastLinks = [],
+  socialLinks = [],
 }: FooterProps) => {
   return (
-    <StyledFooter>
+    <Box as="footer" backgroundColor="secondary" p={3}>
       <Container>
         <Flex>
-          <div style={{ flex: '1 1 0' }}>
-            {logo}
-            <div>{description}</div>
-          </div>
+          <Box width={[1 / 4]}>
+            <Text color="invertText" fontWeight="bold">
+              {name}
+            </Text>
+            <Text color="invertText" my={3}>
+              {description}
+            </Text>
+          </Box>
 
-          <div style={{ flex: '1 1 0' }}>
-            <h4>Pages</h4>
-            <ul>
-              {pages.map(({ path, name }) => (
-                <li key={path}>
-                  <Link to={path}>{name}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <Box width={[1 / 4]}>
+            <Text color="invertText" fontWeight="bold">
+              Pages
+            </Text>
+            <LinkList links={pages} direction="vertical" />
+          </Box>
 
-          <div style={{ flex: '1 1 0' }}>
-            <h4>Useful Link</h4>
-            <ul>
-              {usefulLinks.map(({ path, name }) => (
-                <li key={path}>
-                  <a href={path}>{name}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <Box width={[1 / 4]}>
+            <Text color="invertText" fontWeight="bold">
+              Podcast links
+            </Text>
+            <LinkList
+              links={podcastLinks.map(addPlatformName)}
+              direction="vertical"
+            />
+          </Box>
 
-          <div style={{ flex: '1 1 0' }}>
-            <h4>Social</h4>
-            <ul>
-              {socialLinks.map(({ icon, path, name }) => (
-                <li key={path}>
-                  <a href={path}>
-                    {name} {icon}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <Box width={[1 / 4]}>
+            <Text color="invertText" fontWeight="bold">
+              Social
+            </Text>
+            <LinkList links={socialLinks.map(addSocialIcon)} />
+          </Box>
         </Flex>
-        <hr />
+        <Box
+          as="hr"
+          backgroundColor="background"
+          my={3}
+          css={`
+            border: 0;
+            height: 1px;
+          `}
+        />
+        <Text textAlign="center" color="invertText">
+          This site was develop using
+          <Link
+            href="https://github.com/EmaSuriano/gatsby-theme-anchor"
+            mx={2}
+            color="invertText"
+          >
+            gatsby-theme-anchor
+          </Link>
+          ❤
+        </Text>
       </Container>
-      <Container>
-        <p style={{ textAlign: 'center' }}>{copyright}</p>
-      </Container>
-    </StyledFooter>
+    </Box>
   );
 };
 
 const Footer = () => {
-  return <FooterTemplate {...footer} />;
+  const { podcast, pages, landing } = useStaticQuery(graphql`
+    query FooterQuery {
+      podcast: anchorPodcast {
+        title
+      }
+      pages: allSitePage(filter: { context: { name: { ne: null } } }) {
+        nodes {
+          path
+          context {
+            name
+          }
+        }
+      }
+      landing: file(name: { eq: "landing" }) {
+        childMarkdownRemark {
+          frontmatter {
+            heading
+            subheading
+            cover
+            podcastLinks
+            socialLinks
+          }
+        }
+      }
+    }
+  `);
+
+  const footerPages = pages.nodes.map(({ path, context }) => ({
+    path,
+    name: context.name,
+  }));
+
+  const {
+    heading,
+    subheading,
+    podcastLinks,
+    socialLinks,
+  } = landing.childMarkdownRemark.frontmatter;
+
+  return (
+    <FooterTemplate
+      name={heading || podcast.title}
+      pages={footerPages}
+      description={subheading}
+      podcastLinks={podcastLinks}
+      socialLinks={socialLinks}
+    />
+  );
 };
 
-export default Footer;
+const SmartFooter = () => {
+  const { mocked, mocks } = useContext(AppContext);
+
+  return mocked ? <FooterTemplate {...mocks.footer} /> : <Footer />;
+};
+
+export default SmartFooter;

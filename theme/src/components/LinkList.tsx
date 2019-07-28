@@ -2,11 +2,7 @@ import React, { ReactNode } from 'react';
 import { Link } from 'gatsby';
 import { PageLink as PageLinkType } from '../types/Link';
 import styled from 'styled-components';
-
-function isUrlValid(str: string) {
-  var regex = /(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
-  return regex.test(str);
-}
+import { isExternalUrl } from '../utils/link';
 
 type PageLinkProps = {
   children: ReactNode;
@@ -19,20 +15,25 @@ const StyledLink = styled.li<PageLinkProps>`
       ? props.theme.colors.secondary
       : props.theme.colors.invertText};
   display: inline-block;
-  margin: 0 10px;
-
-  &:first-child {
-    margin-left: 0px;
-  }
+  margin: ${props => props.theme.space[1]}px;
 
   & a {
     color: inherit;
     text-decoration: none;
   }
+
+  & a:hover {
+    color: ${props => props.theme.colors.secondaryLight};
+  }
 `;
 
-const StyledList = styled.ul`
+type ListDirection = 'vertical' | 'horizontal';
+
+const StyledList = styled.ul<{ direction: ListDirection }>`
   padding: 0;
+  display: flex;
+  flex-direction: ${props =>
+    props.direction === 'vertical' ? 'column' : 'row'};
 `;
 
 type Props = {
@@ -42,16 +43,20 @@ type Props = {
 };
 
 const LinkList = ({ direction = 'horizontal', links, selected }: Props) => (
-  <StyledList>
-    {links.map(({ path, name }) => (
-      <StyledLink selected={path === selected} key={path}>
-        {isUrlValid(path) ? (
-          <a href={path}>{name}</a>
-        ) : (
-          <Link to={path}>{name}</Link>
-        )}
-      </StyledLink>
-    ))}
+  <StyledList direction={direction}>
+    {links.map(({ path, name }) => {
+      const content = typeof name === 'string' ? name.toUpperCase() : name;
+
+      return (
+        <StyledLink selected={path === selected} key={path}>
+          {isExternalUrl(path) ? (
+            <a href={path}>{content}</a>
+          ) : (
+            <Link to={path}>{content}</Link>
+          )}
+        </StyledLink>
+      );
+    })}
   </StyledList>
 );
 

@@ -1,13 +1,23 @@
 const fs = require('fs');
+const path = require('path');
 const YAML = require('yaml');
 
 const SRC_PATH = __dirname;
-const CONFIG_PATH = '/static/admin';
-const BADGE_PATH = '/static/badges';
 const CMS_DATA = '/src/cms';
 
+const copyFolderSync = (from, to) => {
+  if (!fs.existsSync(to)) fs.mkdirSync(to);
+  fs.readdirSync(from).forEach(element => {
+    if (fs.lstatSync(path.join(from, element)).isFile()) {
+      fs.copyFileSync(path.join(from, element), path.join(to, element));
+    } else {
+      copyFolderSync(path.join(from, element), path.join(to, element));
+    }
+  });
+};
+
 const writeConfigFile = clientPath => {
-  const file = fs.readFileSync(`${SRC_PATH}/${CONFIG_PATH}/config.yml`, 'utf8');
+  const file = fs.readFileSync(`${SRC_PATH}/static/admin/config.yml`, 'utf8');
   const config = YAML.parse(file);
 
   fs.writeFileSync(
@@ -15,17 +25,7 @@ const writeConfigFile = clientPath => {
     'export default ' + JSON.stringify(config),
   );
 
-  fs.copyFileSync(
-    `${SRC_PATH}/${CONFIG_PATH}/config.yml`,
-    `${clientPath}/${CONFIG_PATH}/config.yml`,
-  );
-
-  fs.readdirSync(`${SRC_PATH}/${BADGE_PATH}`).map(badge =>
-    fs.copyFileSync(
-      `${SRC_PATH}/${BADGE_PATH}/${badge}`,
-      `${clientPath}/${BADGE_PATH}/${badge}`,
-    ),
-  );
+  copyFolderSync(`${SRC_PATH}/static`, `${clientPath}/static`);
 };
 
 module.exports = ({ anchorRss, path: clientPath }) => {
@@ -35,7 +35,9 @@ module.exports = ({ anchorRss, path: clientPath }) => {
     );
   }
 
-  writeConfigFile(clientPath);
+  if (process.env.NODE_ENV === 'development') {
+    writeConfigFile(clientPath);
+  }
 
   return {
     siteMetadata: {

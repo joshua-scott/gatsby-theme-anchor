@@ -3,11 +3,12 @@ import Layout from '../components/Layout';
 import Hero from '../components/Hero';
 import Episode from '../components/Episode';
 import { graphql, useStaticQuery } from 'gatsby';
-import { Text, Flex } from 'rebass';
+import { Text, Flex, Box, Image } from 'rebass';
 import {
   Podcast as PodcastType,
   Episode as EpisodeType,
 } from '../types/Podcast';
+import NotFound from '../components/NotFound';
 
 type Props = {
   latestEpisodes: EpisodeType[];
@@ -27,11 +28,13 @@ export const LandingTemplate = ({
     {latestEpisodes.length > 0 ? (
       <Flex flexWrap="wrap">
         {latestEpisodes.map(episode => (
-          <Episode key={episode.id} {...episode} />
+          <Box width={[1, 1, 1 / 2]} key={episode.id}>
+            <Episode {...episode} />
+          </Box>
         ))}
       </Flex>
     ) : (
-      <Text fontSize={[5, 6]}>Oops there is nothing here ...</Text>
+      <NotFound reason="Oops ... It seems that you don't have podcasts yet 😕" />
     )}
   </Layout>
 );
@@ -39,7 +42,7 @@ export const LandingTemplate = ({
 const Landing = () => {
   const { anchorPodcast, latestEpisodes, landing } = useStaticQuery(graphql`
     query LandingQuery {
-      latestEpisodes: allAnchorEpisode(limit: 3) {
+      latestEpisodes: allAnchorEpisode(limit: 4) {
         nodes {
           id
           title
@@ -100,9 +103,7 @@ const Landing = () => {
   return (
     <LandingTemplate
       podcast={podcast}
-      latestEpisodes={latestEpisodes.nodes
-        .concat(latestEpisodes.nodes)
-        .concat(latestEpisodes.nodes)}
+      latestEpisodes={latestEpisodes.nodes}
       cover={cover}
     />
   );

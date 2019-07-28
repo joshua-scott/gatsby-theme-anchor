@@ -17,13 +17,6 @@ exports.createPages = ({ actions, reporter }) => {
       name: 'Episodes',
     },
   });
-  actions.createPage({
-    path: '/news',
-    component: require.resolve('./src/templates/News.tsx'),
-    context: {
-      name: 'News',
-    },
-  });
 };
 
 exports.onCreateDevServer = ({ app }) => {

@@ -1,5 +1,6 @@
 import React, { createContext } from 'react';
-import * as mocks from '../mocks/Components';
+import footer from '../mocks/footer';
+import header from '../mocks/header';
 
 interface ContextInterface {
   mocked: boolean;
@@ -11,7 +12,10 @@ export const AppContext = createContext<ContextInterface>({ mocked: false });
 const MockWrapper = ({ mocked, children }) => {
   const value = {
     mocked,
-    mocks,
+    mocks: {
+      footer,
+      header,
+    },
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
