@@ -6,3 +6,8 @@ export type PageLink = {
 export type SocialLink = PageLink & {
   icon: string;
 };
+
+export type ImageLink = {
+  src: string;
+  alt: string;
+};

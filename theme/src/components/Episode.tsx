@@ -1,10 +1,9 @@
 import React from 'react';
 import { Styled } from 'theme-ui';
-import * as AnchorTypes from '../types/Anchor';
+import * as PodcastTypes from '../types/Podcast';
 import AudioPlayer from './AudioPlayer';
-import Markdown from './Markdown';
 
-type Props = AnchorTypes.Episode;
+type Props = PodcastTypes.Episode;
 
 const Episode = ({ title, link, publishedDate, itunes, enclosure }: Props) => {
   console.log(itunes);

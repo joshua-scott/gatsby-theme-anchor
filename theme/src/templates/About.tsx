@@ -2,10 +2,9 @@ import React from 'react';
 import Layout from '../components/Layout';
 import { graphql, useStaticQuery } from 'gatsby';
 import ReactMarkdown from 'react-markdown';
+import { About as AboutType } from '../types/Cms';
 
-type Props = {
-  title: string;
-  content: string;
+type Props = AboutType & {
   mocked?: boolean;
 };
 

@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import ReactHeadroom from 'react-headroom';
 import { graphql, useStaticQuery, Link } from 'gatsby';
 import { Flex } from 'rebass';
-import { Podcast } from '../types/Anchor';
+import { Podcast } from '../types/Podcast';
 import { SitePage } from '../types/Gatsby';
 import { Location } from '@reach/router';
 import styled from 'styled-components';

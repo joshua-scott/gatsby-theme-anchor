@@ -1,27 +1,38 @@
 import React from 'react';
 import Layout from '../components/Layout';
-import Banner from '../components/Banner';
+import Hero from '../components/Hero';
 import Episode from '../components/Episode';
 import { graphql, useStaticQuery } from 'gatsby';
-import * as AnchorTypes from '../types/Anchor';
+import {
+  Podcast as PodcastType,
+  Episode as EpisodeType,
+} from '../types/Podcast';
 
 type Props = {
-  latestEpisodes: AnchorTypes.Episode[];
-  podcast: AnchorTypes.Podcast;
+  latestEpisodes: EpisodeType[];
+  podcast: PodcastType;
   mocked?: boolean;
+  cover?: string;
 };
 
-export const LandingTemplate = ({ podcast, latestEpisodes, mocked }: Props) => (
-  <Layout mocked={mocked} heroContent={<Banner {...podcast} />}>
+export const LandingTemplate = ({
+  podcast,
+  latestEpisodes,
+  mocked,
+  cover,
+}: Props) => (
+  <Layout mocked={mocked} hero={<Hero podcast={podcast} cover={cover} />}>
     <h1>Latest episodes</h1>
-    {latestEpisodes.map(episode => (
-      <Episode key={episode.id} {...episode} />
-    ))}
+    {latestEpisodes.length > 0 ? (
+      latestEpisodes.map(episode => <Episode key={episode.id} {...episode} />)
+    ) : (
+      <h2>Oops there is nothing here ...</h2>
+    )}
   </Layout>
 );
 
 const Landing = () => {
-  const { podcast, latestEpisodes } = useStaticQuery(graphql`
+  const { anchorPodcast, latestEpisodes, landing } = useStaticQuery(graphql`
     query LandingQuery {
       latestEpisodes: allAnchorEpisode(limit: 3) {
         nodes {
@@ -44,20 +55,49 @@ const Landing = () => {
           }
         }
       }
-      podcast: anchorPodcast {
+      anchorPodcast {
         title
         link
         description
         image {
           url
-          title
+        }
+      }
+      landing: file(name: { eq: "landing" }) {
+        childMarkdownRemark {
+          frontmatter {
+            heading
+            subheading
+            logo
+            cover
+            podcastLinks
+          }
         }
       }
     }
   `);
 
+  const {
+    heading,
+    subheading,
+    logo,
+    podcastLinks,
+    cover,
+  } = landing.childMarkdownRemark.frontmatter;
+
+  const podcast: PodcastType = {
+    title: heading || anchorPodcast.title,
+    description: subheading,
+    logo: logo || anchorPodcast.image.url,
+    podcastLinks: podcastLinks || [anchorPodcast.link],
+  };
+
   return (
-    <LandingTemplate podcast={podcast} latestEpisodes={latestEpisodes.nodes} />
+    <LandingTemplate
+      podcast={podcast}
+      latestEpisodes={latestEpisodes.nodes}
+      cover={cover}
+    />
   );
 };
 

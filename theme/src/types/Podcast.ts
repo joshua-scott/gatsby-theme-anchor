@@ -1,11 +1,9 @@
 export type Podcast = {
   title: string;
-  link: string;
+  podcastLinks: string[];
+  socialLinks?: string[];
   description: string;
-  image: {
-    url: string;
-    title: string;
-  };
+  logo: string;
 };
 
 export type Episode = {

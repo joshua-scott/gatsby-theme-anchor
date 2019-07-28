@@ -1,9 +1,12 @@
 import React, { ReactNode } from 'react';
 import styled from 'styled-components';
+import Header from './Header';
+import Banner from './Banner';
+import { Podcast } from '../types/Podcast';
 
 type Props = {
-  header: ReactNode;
-  content: ReactNode;
+  podcast: Podcast;
+  cover: string;
 };
 
 const Container = styled.div`
@@ -14,18 +17,21 @@ const Container = styled.div`
   margin: auto;
 `;
 
-const HeroContainer = styled.div`
-  background: ${props => props.theme.colors.primary};
+const HeroContainer = styled.div<{ background: string }>`
+  background-image: url(${props => props.background});
+  background-color: ${props => props.theme.colors.invertText};
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 `;
 
-const Hero = ({ header, content }: Props) => {
-  // typescript please ...
-  if (!content) return <React.Fragment>{header}</React.Fragment>;
-
+const Hero = ({ podcast, cover }: Props) => {
   return (
-    <HeroContainer>
-      {header}
-      <Container>{content}</Container>
+    <HeroContainer background={cover}>
+      <Header transparentHeader />
+      <Container>
+        <Banner {...podcast} />
+      </Container>
     </HeroContainer>
   );
 };

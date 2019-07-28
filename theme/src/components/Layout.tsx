@@ -47,20 +47,17 @@ const AppWrapper = styled.div`
 
 type Props = {
   children: ReactNode;
-  heroContent?: ReactNode;
+  hero?: ReactNode;
   mocked?: boolean;
 };
 
-const Layout = ({ children, heroContent, mocked }: Props) => {
+const Layout = ({ children, hero, mocked }: Props) => {
   return (
     <ThemeProvider theme={theme}>
       <MockWrapper mocked={mocked}>
         <AppWrapper>
           <GlobalStyle />
-          <Hero
-            header={<Header transparentHeader={!!heroContent} />}
-            content={heroContent}
-          />
+          {hero || <Header />}
           <Main>
             <Container>{children}</Container>
           </Main>
