@@ -21,7 +21,8 @@ const Main = styled.div`
   min-width: 0;
   flex: 1 1 auto;
   margin: 0 auto;
-  max-width: 650px;
+  max-width: ${props =>
+    props.theme.breakpoints[props.theme.breakpoints.length - 1]};
   width: 90vw;
 `;
 

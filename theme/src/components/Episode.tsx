@@ -15,20 +15,19 @@ const Episode = ({ title, link, publishedDate, itunes, enclosure }: Props) => {
   const theme = useContext(ThemeContext);
   return (
     <Card
-      width={1}
+      width={[1, 1, 1 / 2]}
       p={4}
-      my={5}
       bg="white"
       borderRadius={6}
       boxShadow={theme.shadows.large}
     >
       <Flex justifyContent="space-between" alignItems="center">
-        <Text fontSize={5} lineHeight={2}>
+        <Text fontSize={[3, 4]} lineHeight={2}>
           {title}
         </Text>
         <Text fontWeight="bold">{publishedDate}</Text>
       </Flex>
-      <Box m={3}>
+      <Box my={3}>
         <AudioPlayer
           url={enclosure.url}
           title={title}
