@@ -1,11 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
 import { normalizeName } from '../utils/string';
 import { detectPodcastPlatform } from '../utils/link';
-
-const StyledImg = styled.img`
-  width: 125px;
-`;
+import { Image } from 'rebass';
 
 type Props = {
   link: string;
@@ -22,7 +18,9 @@ const PodcastBadge = ({ link }: Props) => {
   const platformName = normalizeName(platform);
 
   const alt = `Listen on ${platformName}`;
-  return <StyledImg src={`img/badges/badge-${platform}.png`} alt={alt} />;
+  return (
+    <Image width={150} src={`img/badges/badge-${platform}.png`} alt={alt} />
+  );
 };
 
 export default PodcastBadge;

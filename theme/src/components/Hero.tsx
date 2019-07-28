@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Header from './Header';
 import { Podcast } from '../types/Podcast';
 import LinkList from './LinkList';
-import { Text, Image, Flex, Heading } from 'rebass';
+import { Text, Image, Flex, Heading, Box } from 'rebass';
 import PodcastBadge from './PodcastBagde';
 import Container from './Container';
 
@@ -30,11 +30,11 @@ const addPlatformName = (link: string) => ({
 
 const Banner = ({ title, description, logo, podcastLinks = [] }: Podcast) => (
   <Flex
-    flexDirection={['column-reverse', 'row']}
     justifyContent="space-between"
     alignItems="center"
+    flexWrap="wrap-reverse"
   >
-    <div>
+    <Box width={[1, 2 / 3, 3 / 4]}>
       <Heading fontSize={[5, 6]} color="invertText">
         {title}
       </Heading>
@@ -42,8 +42,10 @@ const Banner = ({ title, description, logo, podcastLinks = [] }: Podcast) => (
         {description}
       </Heading>
       <LinkList links={podcastLinks.map(addPlatformName)} />
-    </div>
-    <Image alt="Podcast logo" src={logo} width={250} m={2} />
+    </Box>
+    <Box width={[2 / 3, 1 / 3, 1 / 4]} m="auto">
+      <Image alt="Podcast logo" src={logo} m={2} />
+    </Box>
   </Flex>
 );
 
