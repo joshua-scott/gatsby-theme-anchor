@@ -1,41 +1,44 @@
 import React from 'react';
 import Layout from '../components/Layout';
 import { graphql, useStaticQuery } from 'gatsby';
-import ReactMarkdown from 'react-markdown';
-import { About as AboutType } from '../types/Cms';
-import { Text, Heading } from 'rebass';
+import { About as AboutType } from '../types/About';
+import { Heading, Flex, Box } from 'rebass';
+import Author from '../components/Author';
+import MarkdownRenderer from '../components/MarkdownRenderer';
 
 type Props = AboutType & {
   mocked?: boolean;
 };
 
-export const AboutTemplate = ({ title, content, mocked }: Props) => (
+export const AboutTemplate = ({ content, mocked, authors = [] }: Props) => (
   <Layout mocked={mocked}>
-    <Heading>{title}</Heading>
+    <Heading fontSize={[5, 6]}>Latest episodes</Heading>
 
-    <ReactMarkdown source={content} />
+    <MarkdownRenderer markdown={content} />
+
+    <Heading fontSize={4} mt={4}>
+      Authors
+    </Heading>
+    <Flex flexWrap="wrap">
+      {authors.map(author => (
+        <Author {...author} />
+      ))}
+    </Flex>
   </Layout>
 );
 
-type AboutQuery = {
-  about: {
-    childMarkdownRemark: {
-      rawMarkdownBody: string;
-      frontmatter: {
-        title: string;
-      };
-    };
-  };
-};
-
-const useAboutQuery = <T extends {}>() =>
-  useStaticQuery<T>(graphql`
+const useAboutQuery = () =>
+  useStaticQuery(graphql`
     query AboutQuery {
       about: file(name: { eq: "about" }) {
         childMarkdownRemark {
-          rawMarkdownBody
-          frontmatter {
-            title
+          content: rawMarkdownBody
+          data: frontmatter {
+            authors {
+              description
+              name
+              picture
+            }
           }
         }
       }
@@ -43,14 +46,10 @@ const useAboutQuery = <T extends {}>() =>
   `);
 
 const About = () => {
-  const { about } = useAboutQuery<AboutQuery>();
+  const { about } = useAboutQuery();
+  const { content, data } = about.childMarkdownRemark;
 
-  return (
-    <AboutTemplate
-      title={about.childMarkdownRemark.frontmatter.title}
-      content={about.childMarkdownRemark.rawMarkdownBody}
-    />
-  );
+  return <AboutTemplate authors={data.authors} content={content} />;
 };
 
 export default About;

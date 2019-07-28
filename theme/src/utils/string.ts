@@ -1,5 +1,8 @@
 export const normalizeName = (str: string) =>
   str
     .split('-')
-    .map(str => str.charAt(0).toUpperCase() + str.slice(1))
+    .map(toCamelCase)
     .join(' ');
+
+export const toCamelCase = (str: string) =>
+  str.charAt(0).toUpperCase() + str.slice(1);

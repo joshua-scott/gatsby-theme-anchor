@@ -3,7 +3,7 @@ import Layout from '../components/Layout';
 import Hero from '../components/Hero';
 import Episode from '../components/Episode';
 import { graphql, useStaticQuery } from 'gatsby';
-import { Text, Flex, Box, Image } from 'rebass';
+import { Text, Flex, Box, Image, Heading } from 'rebass';
 import {
   Podcast as PodcastType,
   Episode as EpisodeType,
@@ -24,7 +24,7 @@ export const LandingTemplate = ({
   cover,
 }: Props) => (
   <Layout mocked={mocked} hero={<Hero podcast={podcast} cover={cover} />}>
-    <Text fontSize={[5, 6]}>Latest episodes</Text>
+    <Heading fontSize={[5, 6]}>Latest episodes</Heading>
     {latestEpisodes.length > 0 ? (
       <Flex flexWrap="wrap">
         {latestEpisodes.map(episode => (

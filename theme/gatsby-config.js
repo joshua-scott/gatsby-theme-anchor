@@ -44,7 +44,6 @@ module.exports = ({ anchorRss, path: clientPath }) => {
       title: 'Gatsby Theme Jam Example Submission',
     },
     plugins: [
-      'gatsby-plugin-theme-ui',
       'gatsby-plugin-typescript',
       {
         resolve: 'gatsby-plugin-netlify-cms',

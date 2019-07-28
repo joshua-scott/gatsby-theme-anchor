@@ -8,12 +8,15 @@ import PodcastBadge from './PodcastBagde';
 import Container from './Container';
 
 const HeroContainer = styled.div<{ background: string }>`
-  background-image: url(${props => props.background});
-  background-color: ${props => props.theme.colors.primary};
+  background-image: ${props =>
+    props.background
+      ? `url(${props.background})`
+      : `linear-gradient(${props.theme.colors.primaryDark}, ${
+          props.theme.colors.primary
+        })`};
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  padding: ${props => props.theme.space[4]}px;
 `;
 
 const StyledBanner = styled.div`
@@ -34,13 +37,9 @@ const Banner = ({ title, description, logo, podcastLinks = [] }: Podcast) => (
     alignItems="center"
     flexWrap="wrap-reverse"
   >
-    <Box width={[1, 2 / 3, 3 / 4]}>
-      <Heading fontSize={[5, 6]} color="invertText">
-        {title}
-      </Heading>
-      <Heading fontSize={[4, 5]} color="invertText">
-        {description}
-      </Heading>
+    <Box width={[1, 2 / 3, 3 / 4]} color="textAlt">
+      <Heading fontSize={[5, 5, 6]}>{title}</Heading>
+      <Heading fontSize={[4, 4, 5]}>{description}</Heading>
       <LinkList links={podcastLinks.map(addPlatformName)} />
     </Box>
     <Box width={[2 / 3, 1 / 3, 1 / 4]} m="auto">
@@ -58,7 +57,7 @@ const Hero = ({ podcast, cover }: Props) => {
   return (
     <HeroContainer background={cover}>
       <Header transparentHeader />
-      <Container>
+      <Container p={3}>
         <Banner {...podcast} />
       </Container>
     </HeroContainer>

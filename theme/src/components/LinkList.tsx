@@ -3,6 +3,7 @@ import { Link } from 'gatsby';
 import { PageLink as PageLinkType } from '../types/Link';
 import styled from 'styled-components';
 import { isExternalUrl } from '../utils/link';
+import { toCamelCase } from '../utils/string';
 
 type PageLinkProps = {
   children: ReactNode;
@@ -11,9 +12,7 @@ type PageLinkProps = {
 
 const StyledLink = styled.li<PageLinkProps & { direction: string }>`
   color: ${props =>
-    props.selected
-      ? props.theme.colors.secondary
-      : props.theme.colors.invertText};
+    props.selected ? props.theme.colors.accent : props.theme.colors.textAlt};
   display: inline-block;
   ${props =>
     props.direction === 'horizontal'
@@ -26,7 +25,8 @@ const StyledLink = styled.li<PageLinkProps & { direction: string }>`
   }
 
   & a:hover {
-    color: ${props => props.theme.colors.secondaryLight};
+    transition: color 0.2s;
+    color: ${props => props.theme.colors.accent};
   }
 `;
 
@@ -48,7 +48,7 @@ type Props = {
 const LinkList = ({ direction = 'horizontal', links, selected }: Props) => (
   <StyledList direction={direction}>
     {links.map(({ path, name }) => {
-      const content = typeof name === 'string' ? name.toUpperCase() : name;
+      const content = typeof name === 'string' ? toCamelCase(name) : name;
 
       return (
         <StyledLink

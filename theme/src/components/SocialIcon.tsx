@@ -1,17 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
 import { normalizeName } from '../utils/string';
 import { detectSocialPlatform } from '../utils/link';
-
-const StyledImg = styled.img`
-  transition: color 0.5s;
-  fill: red;
-  color: red;
-
-  &:hover {
-    fill: ${props => props.theme.colors.primary};
-  }
-`;
+import { Image } from 'rebass';
 
 type Props = {
   link: string;
@@ -28,7 +18,7 @@ const SocialIcon = ({ link }: Props) => {
 
   return (
     <div style={{ color: 'red' }}>
-      <StyledImg
+      <Image
         src={`img/social/social-${page}.svg`}
         width="30px"
         alt={normalizeName(page)}

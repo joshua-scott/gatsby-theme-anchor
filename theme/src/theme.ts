@@ -1,21 +1,19 @@
+// Palette generated with https://www.materialpalette.com/purple/pink
+const colors = {
+  primaryDark: '#7B1FA2',
+  primary: '#9C27B0',
+  primaryLight: '#E1BEE7',
+  accent: '#FF4081',
+  text: '#4B4453',
+  textSecondary: '#757575',
+  textAlt: '#FFF',
+  background: '#FFF',
+};
+
 const theme = {
   breakpoints: ['40em', '50em', '55em'],
   fontSizes: [12, 14, 16, 20, 24, 32, 48, 64],
-  colors: {
-    text: '#292f36',
-    invertText: 'white',
-
-    background: '#f2f2f4',
-    backgroundDark: '#faf3ff',
-
-    primary: '#7c37ad',
-    primaryLight: '#ae66df',
-    primaryDark: '#4b007d',
-
-    secondary: '#ff4081',
-    secondaryLight: '#ff79b0',
-    secondaryDark: '#c60055',
-  },
+  colors: colors,
   space: [0, 4, 8, 16, 32, 64, 128, 256],
   fonts: {
     sans: 'system-ui, sans-serif',

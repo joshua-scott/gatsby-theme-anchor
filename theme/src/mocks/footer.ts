@@ -1,6 +1,6 @@
 export default {
   name: 'CMS Preview',
-  description: 'Footer description',
+  description: 'These values are mocked for the CMS',
   pages: [{ path: '/', name: 'home' }, { path: '/about', name: 'about' }],
   podcastLinks: [
     'https://anchor.fm/the-es-podcast',

@@ -23,7 +23,7 @@ const AudioPlayer = ({ url, title, cover, link }: Props) => {
       link={link}
       color={theme.colors.text}
       progressBarBackground={theme.colors.primaryLight}
-      progressBarCompleteBackground={theme.colors.primary}
+      progressBarCompleteBackground={theme.colors.accent}
       linkText="Link to Anchor"
     />
   );

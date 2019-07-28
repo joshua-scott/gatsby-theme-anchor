@@ -3,10 +3,10 @@ import { ThemeProvider } from 'styled-components';
 import theme from '../theme';
 import { createGlobalStyle } from 'styled-components';
 import styled from 'styled-components';
-import Hero from './Hero';
 import Footer from './Footer';
 import Header from './Header';
 import MockWrapper from './MockWrapper';
+import Container from './Container';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -28,12 +28,6 @@ const Main = styled.main`
   max-width: ${props =>
     props.theme.breakpoints[props.theme.breakpoints.length - 1]};
   width: 90vw;
-`;
-
-const Container = styled.div`
-  padding: 0;
-  padding-bottom: 10px;
-  padding-top: 10px;
 `;
 
 const AppWrapper = styled.div`
@@ -64,7 +58,7 @@ const Layout = ({ children, hero, mocked }: Props) => {
           <GlobalStyle />
           {hero || <Header />}
           <Main>
-            <Container>{children}</Container>
+            <Container py={[4, 5]}>{children}</Container>
           </Main>
           <Footer />
         </AppWrapper>

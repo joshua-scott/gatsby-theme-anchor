@@ -25,7 +25,9 @@ const Episode = ({ title, link, publishedDate, itunes, enclosure }: Props) => {
         <Heading fontSize={[3, 4]} lineHeight={2}>
           {title}
         </Heading>
-        <Text fontWeight="bold">{publishedDate}</Text>
+        <Text fontWeight="bold" color="textSecondary">
+          {publishedDate}
+        </Text>
       </Flex>
       <StyledSummary dangerouslySetInnerHTML={{ __html: itunes.summary }} />
       <Box my={3}>

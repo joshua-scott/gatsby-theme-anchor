@@ -18,16 +18,16 @@ export type HeaderProps = {
 };
 
 const HomeLink = styled(Link)`
-  color: ${props => props.theme.colors.invertText};
+  color: ${props => props.theme.colors.textAlt};
   text-decoration: none;
 `;
 
 const HeaderContainer = styled(ReactHeadroom)`
   .headroom--pinned {
-    background: ${props => props.theme.colors.primary};
+    background: ${props => props.theme.colors.primaryDark};
   }
   background: ${props =>
-    props.transparent ? 'transparent' : props.theme.colors.primary};
+    props.transparent ? 'transparent' : props.theme.colors.primaryDark};
 `;
 
 export const HeaderTemplate = ({

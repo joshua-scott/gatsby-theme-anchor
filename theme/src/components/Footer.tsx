@@ -35,29 +35,21 @@ export const FooterTemplate = ({
   socialLinks = [],
 }: FooterProps) => {
   return (
-    <Box as="footer" backgroundColor="secondary" p={3}>
+    <Box as="footer" backgroundColor="primaryDark" color="textAlt" p={3}>
       <Container>
         <Flex flexWrap="wrap">
           <Box width={[1, 1 / 4]}>
-            <Text color="invertText" fontWeight="bold">
-              {name}
-            </Text>
-            <Text color="invertText" my={3}>
-              {description}
-            </Text>
+            <Text fontWeight="bold">{name}</Text>
+            <Text my={3}>{description}</Text>
           </Box>
 
           <Box width={[1 / 3, 1 / 4]}>
-            <Text color="invertText" fontWeight="bold">
-              Pages
-            </Text>
+            <Text fontWeight="bold">Pages</Text>
             <LinkList links={pages} direction="vertical" />
           </Box>
 
           <Box width={[1 / 3, 1 / 4]}>
-            <Text color="invertText" fontWeight="bold">
-              Podcast links
-            </Text>
+            <Text fontWeight="bold">Podcast links</Text>
             <LinkList
               links={podcastLinks.map(addPlatformName)}
               direction="vertical"
@@ -65,9 +57,7 @@ export const FooterTemplate = ({
           </Box>
 
           <Box width={[1 / 3, 1 / 4]}>
-            <Text color="invertText" fontWeight="bold">
-              Social
-            </Text>
+            <Text fontWeight="bold">Social</Text>
             <LinkList links={socialLinks.map(addSocialIcon)} />
           </Box>
         </Flex>
@@ -80,12 +70,12 @@ export const FooterTemplate = ({
             height: 1px;
           `}
         />
-        <Text textAlign="center" color="invertText">
+        <Text textAlign="center">
           This site was develop using
           <Link
             href="https://github.com/EmaSuriano/gatsby-theme-anchor"
             mx={2}
-            color="invertText"
+            color="textAlt"
           >
             gatsby-theme-anchor
           </Link>
