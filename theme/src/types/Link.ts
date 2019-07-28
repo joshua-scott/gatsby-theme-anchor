@@ -1,6 +1,8 @@
+import { ReactNode } from 'react';
+
 export type PageLink = {
   path: string;
-  name: string;
+  name: string | ReactNode;
 };
 
 export type SocialLink = PageLink & {

@@ -21,10 +21,18 @@ const StyledLink = styled.li<PageLinkProps>`
   display: inline-block;
   margin: 0 10px;
 
+  &:first-child {
+    margin-left: 0px;
+  }
+
   & a {
     color: inherit;
     text-decoration: none;
   }
+`;
+
+const StyledList = styled.ul`
+  padding: 0;
 `;
 
 type Props = {
@@ -34,7 +42,7 @@ type Props = {
 };
 
 const LinkList = ({ direction = 'horizontal', links, selected }: Props) => (
-  <ul>
+  <StyledList>
     {links.map(({ path, name }) => (
       <StyledLink selected={path === selected} key={path}>
         {isUrlValid(path) ? (
@@ -44,7 +52,7 @@ const LinkList = ({ direction = 'horizontal', links, selected }: Props) => (
         )}
       </StyledLink>
     ))}
-  </ul>
+  </StyledList>
 );
 
 export default LinkList;

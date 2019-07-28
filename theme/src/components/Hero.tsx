@@ -1,13 +1,10 @@
 import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 import Header from './Header';
-import Banner from './Banner';
 import { Podcast } from '../types/Podcast';
-
-type Props = {
-  podcast: Podcast;
-  cover: string;
-};
+import LinkList from './LinkList';
+import { detectPodcastPlatform } from '../utils/linkDetector';
+import PodcastBadge from './PodcastBagde';
 
 const Container = styled.div`
   padding: 0;
@@ -24,6 +21,34 @@ const HeroContainer = styled.div<{ background: string }>`
   background-repeat: no-repeat;
   background-size: cover;
 `;
+
+const StyledBanner = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+`;
+
+const addPlatformName = (link: string) => ({
+  path: link,
+  name: <PodcastBadge platform={detectPodcastPlatform(link)} />,
+});
+
+const Banner = ({ title, description, logo, podcastLinks = [] }: Podcast) => (
+  <StyledBanner>
+    <div>
+      <h1>{title}</h1>
+      <h2>{description}</h2>
+      <LinkList links={podcastLinks.map(addPlatformName)} />
+    </div>
+    <img alt="Podcast logo" src={logo} style={{ width: '10em' }} />
+  </StyledBanner>
+);
+
+type Props = {
+  podcast: Podcast;
+  cover: string;
+};
 
 const Hero = ({ podcast, cover }: Props) => {
   return (

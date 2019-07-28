@@ -37,7 +37,7 @@ export const HeaderTemplate = ({
   currentPath,
 }: HeaderProps) => (
   <HeaderContainer transparent={transparentHeader}>
-    <Flex justifyContent="space-between" alignItems="center" px={2}>
+    <Flex justifyContent="space-between" alignItems="center" px={4}>
       <HomeLink to="/">
         <h2>{title}</h2>
       </HomeLink>
