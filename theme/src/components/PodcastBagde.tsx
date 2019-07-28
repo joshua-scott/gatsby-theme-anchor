@@ -10,14 +10,13 @@ type Props = {
 };
 
 const PodcastBadge = ({ platform }: Props) => {
-  const src = require(`../icons/badge-${platform}.png`);
   const platformName = platform
     .split('-')
     .map(str => str.charAt(0).toUpperCase() + str.slice(1))
     .join(' ');
 
   const alt = `Listen on ${platformName}`;
-  return <StyledImg src={src} alt={alt} />;
+  return <StyledImg src={`badges/badge-${platform}.png`} alt={alt} />;
 };
 
 export default PodcastBadge;

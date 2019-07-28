@@ -24,6 +24,7 @@ collections:
               name: heading,
               hint: 'Heading for the Banner',
               widget: string,
+              required: false,
             }
           - {
             label: Subheading,

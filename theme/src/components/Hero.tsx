@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Header from './Header';
 import { Podcast } from '../types/Podcast';
 import LinkList from './LinkList';
+import { Text, Flex } from 'rebass';
 import { detectPodcastPlatform } from '../utils/linkDetector';
 import PodcastBadge from './PodcastBagde';
 
@@ -37,8 +38,12 @@ const addPlatformName = (link: string) => ({
 const Banner = ({ title, description, logo, podcastLinks = [] }: Podcast) => (
   <StyledBanner>
     <div>
-      <h1>{title}</h1>
-      <h2>{description}</h2>
+      <Text fontSize={[5, 6]} fontWeight="bold" color="invertText">
+        {title}
+      </Text>
+      <Text fontSize={[4, 5]} fontWeight="bold" color="invertText">
+        {description}
+      </Text>
       <LinkList links={podcastLinks.map(addPlatformName)} />
     </div>
     <img alt="Podcast logo" src={logo} style={{ width: '10em' }} />

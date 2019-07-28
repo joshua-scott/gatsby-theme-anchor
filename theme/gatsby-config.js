@@ -3,6 +3,7 @@ const YAML = require('yaml');
 
 const SRC_PATH = __dirname;
 const CONFIG_PATH = '/static/admin';
+const BADGE_PATH = '/static/badges';
 const CMS_DATA = '/src/cms';
 
 const writeConfigFile = clientPath => {
@@ -17,6 +18,13 @@ const writeConfigFile = clientPath => {
   fs.copyFileSync(
     `${SRC_PATH}/${CONFIG_PATH}/config.yml`,
     `${clientPath}/${CONFIG_PATH}/config.yml`,
+  );
+
+  fs.readdirSync(`${SRC_PATH}/${BADGE_PATH}`).map(badge =>
+    fs.copyFileSync(
+      `${SRC_PATH}/${BADGE_PATH}/${badge}`,
+      `${clientPath}/${BADGE_PATH}/${badge}`,
+    ),
   );
 };
 
