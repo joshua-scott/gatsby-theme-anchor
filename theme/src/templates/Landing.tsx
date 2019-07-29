@@ -41,7 +41,7 @@ export const LandingTemplate = ({
       </Flex>
     ) : (
       <ErrorMessage image={notFoundImage}>
-        Oops ... It seems that you don't have podcasts yet 😕
+        Oops ... It seems that you didn't record any episodes yet 😕
       </ErrorMessage>
     )}
   </Layout>
@@ -50,7 +50,7 @@ export const LandingTemplate = ({
 const Landing = () => {
   const { anchorPodcast, allAnchorEpisode, landing } = useStaticQuery(graphql`
     query LandingQuery {
-      allAnchorEpisode(limit: 4) {
+      allAnchorEpisode(limit: 4, sort: { order: ASC, fields: pubDate }) {
         nodes {
           id
           title

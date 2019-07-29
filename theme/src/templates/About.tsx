@@ -12,7 +12,7 @@ type Props = AboutType & {
 
 export const AboutTemplate = ({ content, mocked, authors = [] }: Props) => (
   <Layout mocked={mocked}>
-    <Heading fontSize={[5, 6]}>Latest episodes</Heading>
+    <Heading fontSize={[5, 6]}>About</Heading>
 
     <MarkdownRenderer markdown={content} />
 

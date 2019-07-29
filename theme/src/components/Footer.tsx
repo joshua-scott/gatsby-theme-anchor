@@ -45,7 +45,7 @@ export const FooterTemplate = ({
     <FooterContainer as="footer" p={3}>
       <Container>
         <Flex flexWrap="wrap">
-          <Box width={[1, 1 / 4]}>
+          <Box width={[1, 1 / 4]} mb={2}>
             <Text fontWeight="bold" mb={2}>
               {name}
             </Text>

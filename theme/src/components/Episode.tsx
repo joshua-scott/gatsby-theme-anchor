@@ -47,7 +47,7 @@ const Episode = ({
       borderRadius={8}
       boxShadow={theme.shadows.large}
     >
-      <Flex justifyContent="space-between" alignItems="center">
+      <Flex justifyContent="space-between" alignItems="center" flexWrap="wrap">
         <EpisodeTitle fontSize={[3, 4]} lineHeight={2}>
           {title}
         </EpisodeTitle>
@@ -63,7 +63,7 @@ const Episode = ({
         dangerouslySetInnerHTML={{ __html: content }}
       />
 
-      <Box my={3} px={large ? 5 : 0} width={1}>
+      <Box my={3} px={[0, large ? 5 : 0]} width={1}>
         <AudioPlayer url={url} link={link} cover={cover} />
       </Box>
     </Card>

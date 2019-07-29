@@ -2,7 +2,7 @@ import React from 'react';
 import Layout from '../components/Layout';
 import { useStaticQuery, graphql } from 'gatsby';
 import { Episode as EpisodeType } from '../types/Podcast';
-import { Flex } from 'rebass';
+import { Flex, Heading } from 'rebass';
 import Episode from '../components/Episode';
 import ErrorMessage from '../components/ErrorMessage';
 import { parseToEpisode } from '../utils/parser';
@@ -19,7 +19,7 @@ const notFoundImage = {
 const EpisodesTemplate = ({ episodes = [] }: Props) => {
   return (
     <Layout>
-      <h1>Episodes</h1>
+      <Heading fontSize={[5, 6]}>Episodes</Heading>
       {episodes.length > 0 ? (
         <Flex flexWrap="wrap">
           {episodes.map(episode => (
@@ -28,7 +28,7 @@ const EpisodesTemplate = ({ episodes = [] }: Props) => {
         </Flex>
       ) : (
         <ErrorMessage image={notFoundImage}>
-          Oops ... It seems that you don't have podcasts yet 😕
+          Oops ... It seems that you didn't record any episodes yet 😕
         </ErrorMessage>
       )}
     </Layout>
@@ -38,7 +38,7 @@ const EpisodesTemplate = ({ episodes = [] }: Props) => {
 const Episodes = () => {
   const { allAnchorEpisode } = useStaticQuery(graphql`
     query EpisodesQuery {
-      allAnchorEpisode {
+      allAnchorEpisode(sort: { order: ASC, fields: pubDate }) {
         nodes {
           id
           title
@@ -61,7 +61,7 @@ const Episodes = () => {
   `);
 
   const episodes: EpisodeType[] = allAnchorEpisode.nodes.map(parseToEpisode);
-  return <EpisodesTemplate episodes={episodes} />;
+  return <EpisodesTemplate episodes={[] || episodes} />;
 };
 
 export default Episodes;

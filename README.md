@@ -42,7 +42,7 @@ When a podcast starts the most difficult part is sharing it with the rest of wor
 
 ## Screenshot and Design
 
-Before jumping into the screenshots I want to thank all these amazing resources:
+Before jumping into the screenshots I want to thank all these amazing resources that allowed to make it that good ✨:
 
 - The pallete of the site has been generated using [Material Palette](https://www.materialpalette.com/purple/pink).
 - The Illustration were taken from [UnDraw](https://undraw.co/)
@@ -51,13 +51,34 @@ Before jumping into the screenshots I want to thank all these amazing resources:
 
 ### Landing
 
+| Desktop                                                    | Mobile                                                   |
+| ---------------------------------------------------------- | -------------------------------------------------------- |
+| ![landing desktop](./docs/screenshots/landing-desktop.png) | ![landing mobile](./docs/screenshots/landing-mobile.png) |
+
 ### About
 
-### Podcast
+| Desktop                                                | Mobile                                               |
+| ------------------------------------------------------ | ---------------------------------------------------- |
+| ![about desktop](./docs/screenshots/about-desktop.png) | ![about mobile](./docs/screenshots/about-mobile.png) |
+
+### Episodes
+
+| Desktop                                                            | Mobile                                                           |
+| ------------------------------------------------------------------ | ---------------------------------------------------------------- |
+| ![episodes desktop](./docs/screenshots/episodes-desktop.png)       | ![episodes mobile](./docs/screenshots/episodes-mobile.png)       |
+| ![no episodes desktop](./docs/screenshots/no-episodes-desktop.png) | ![no episodes mobile](./docs/screenshots/no-episodes-mobile.png) |
 
 ### 404
 
+| Desktop                                            | Mobile                                           |
+| -------------------------------------------------- | ------------------------------------------------ |
+| ![404 desktop](./docs/screenshots/404-desktop.png) | ![404 mobile](./docs/screenshots/404-mobile.png) |
+
 ### CMS
+
+| Landing                                            | About                                          |
+| -------------------------------------------------- | ---------------------------------------------- |
+| ![CMS landing](./docs/screenshots/cms-landing.png) | ![CMS about](./docs/screenshots/cms-about.png) |
 
 ## Deploying your site
 
