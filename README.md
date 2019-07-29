@@ -90,9 +90,34 @@ Before jumping into the screenshots I want to thank all these amazing resources 
 
 ## How to Start 👷‍
 
+Given this project use `yarn Workspace` if you download the project you will download the entire project, demo and theme all together. You can always clone the project and remove the additional folder.
+
+In order to avoid confusion, I created a branch called `demo` with only the code to run the example. Go your terminal and run:
+
+```bash
+> git clone --single-branch --branch demo https://github.com/EmaSuriano/gatsby-theme-anchor.git
+```
+
+This will clone the project with only the example on it. Then you need to install the dependencies and in this case, `gatsby-theme-anchor` will be taken from `npm` and not from the local folder (like `yarn workspace` was doing).
+
+```bash
+> yarn #install dependencies
+> yarn start #start project
+```
+
+After running the project you should be able to go to the [`http://localhost:8000`](http://localhost:8000) and see the [Landing Page](#landing). This means that you set up the theme successfully, now let's jump into the Customization!
+
+## Customization 🎨
+
 ## Deploying your site 📦
 
-## Customization
+In order to deploy and enable all the powerful of the CMS I highly recommend using [Netlify](https://www.netlify.com). It's a static website hosting with the capability of synchronizing with your GitHub repository, so then every time you push a new deployment is released!
+
+Please follow this [Step by Step Guide](https://www.netlify.com/blog/2016/09/29/a-step-by-step-guide-deploying-on-netlify/) from the official documentation of Netlify. When you reach to the point of setting the command the output folder, you need to set as command `yarn build` and as output folder `/dist`.
+
+This last step is totally optionally but it's one of my favorite of this setup. As this theme use Netlify CMS you can enable the `Identity` feature inside the deployment configuration that will allow to modify your data through the deployed site by making commit to the repository.
+
+Please follow this [Guide](https://www.netlifycms.org/docs/authentication-backends/) to enable.I already provide a proper `config.yml` inside `/static/admin` folder but you still need to enable from your side. In order to check if everything is working, go to the route `/admin` of your deployed site, there you need to authenticate (you can pick different services in the previous step) and once you are inside the CMS every change you make it will push a commit to the repository. Dispatching a new release of your website 😄
 
 ## Trouble Shooting 💥
 
