@@ -1,6 +1,6 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/d472f990-9300-4406-a5a0-388ca0662966/deploy-status)](https://app.netlify.com/sites/gatsby-theme-anchor/deploys)
 
-# gatsby-theme-anchor
+# Gatsby Theme Anchor
 
 <p align="center">
   <a href="https://gatsby-theme-anchor.netlify.com/">
