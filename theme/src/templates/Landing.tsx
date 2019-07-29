@@ -8,7 +8,7 @@ import {
   Podcast as PodcastType,
   Episode as EpisodeType,
 } from '../types/Podcast';
-import NotFound from '../components/NotFound';
+import ErrorMessage from '../components/ErrorMessage';
 
 type Props = {
   latestEpisodes: EpisodeType[];
@@ -34,7 +34,10 @@ export const LandingTemplate = ({
         ))}
       </Flex>
     ) : (
-      <NotFound reason="Oops ... It seems that you don't have podcasts yet 😕" />
+      <ErrorMessage
+        reason="Oops ... It seems that you don't have podcasts yet 😕"
+        image="not-found"
+      />
     )}
   </Layout>
 );
@@ -103,7 +106,7 @@ const Landing = () => {
   return (
     <LandingTemplate
       podcast={podcast}
-      latestEpisodes={latestEpisodes.nodes}
+      latestEpisodes={[] || latestEpisodes.nodes}
       cover={cover}
     />
   );

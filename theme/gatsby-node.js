@@ -4,6 +4,10 @@ exports.createPages = ({ actions, reporter }) => {
     component: require.resolve('./src/templates/Landing.tsx'),
   });
   actions.createPage({
+    path: '/404',
+    component: require.resolve('./src/templates/404.tsx'),
+  });
+  actions.createPage({
     path: '/about',
     component: require.resolve('./src/templates/About.tsx'),
     context: {

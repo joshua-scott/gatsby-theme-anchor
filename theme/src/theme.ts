@@ -1,7 +1,7 @@
 // Palette generated with https://www.materialpalette.com/purple/pink
 const colors = {
-  primaryDark: '#7B1FA2',
   primary: '#9C27B0',
+  primaryDark: '#7B1FA2',
   primaryLight: '#E1BEE7',
   accent: '#FF4081',
   text: '#4B4453',

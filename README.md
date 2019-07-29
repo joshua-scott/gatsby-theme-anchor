@@ -42,13 +42,20 @@ When a podcast starts the most difficult part is sharing it with the rest of wor
 
 ## Screenshot and Design
 
+Before jumping into the screenshots I want to thank all these amazing resources:
+
+- The pallete of the site has been generated using [Material Palette](https://www.materialpalette.com/purple/pink).
+- The Illustration were taken from [UnDraw](https://undraw.co/)
+- The Social Icons are from [Font Awesome](https://fontawesome.com/)
+- The Component library used under the hood is [Rebass](https://rebassjs.org/)
+
 ### Landing
 
 ### About
 
 ### Podcast
 
-### News
+### 404
 
 ### CMS
 
