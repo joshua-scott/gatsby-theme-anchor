@@ -58,8 +58,8 @@ const Layout = ({ children, hero, mocked }: Props) => {
       <GlobalStyle />
       <ThemeProvider theme={theme}>
         <AppWrapper>
-          <Helmet />
           <MockWrapper mocked={mocked}>
+            <Helmet />
             {hero || <Header />}
             <Main>
               <Container py={[4, 5]}>{children}</Container>
