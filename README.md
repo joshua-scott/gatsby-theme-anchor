@@ -48,8 +48,6 @@ I recorded a really short podcast in which I talked about this project. So in ca
 
 ![Ligthouse score](./docs/lighthouse.png)
 
-## How to Start 👷‍
-
 ## Screenshot and Design 👩‍🎨
 
 Before jumping into the screenshots I want to thank all these amazing resources that allowed to make it that good ✨:
@@ -89,6 +87,8 @@ Before jumping into the screenshots I want to thank all these amazing resources 
 | Landing                                            | About                                          |
 | -------------------------------------------------- | ---------------------------------------------- |
 | ![CMS landing](./docs/screenshots/cms-landing.png) | ![CMS about](./docs/screenshots/cms-about.png) |
+
+## How to Start 👷‍
 
 ## Deploying your site 📦
 
