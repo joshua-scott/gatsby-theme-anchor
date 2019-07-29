@@ -15,6 +15,10 @@ const StyledList = styled.ul<{ direction: ListDirection }>`
     props.direction === 'vertical' ? 'column' : 'row'};
 `;
 
+const StyledItemList = styled(Box)`
+  display: inline-block;
+`;
+
 type Props = {
   links: PageLinkType[];
   direction?: 'vertical' | 'horizontal';
@@ -28,9 +32,9 @@ const LinkList = ({ direction = 'horizontal', links }: Props) => (
       const margin = direction === 'horizontal' ? { mx: 1 } : { my: 1 };
 
       return (
-        <Box {...margin} key={path}>
+        <StyledItemList as="li" {...margin}>
           <Link path={path}>{content}</Link>
-        </Box>
+        </StyledItemList>
       );
     })}
   </StyledList>

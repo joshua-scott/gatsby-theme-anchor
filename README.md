@@ -44,6 +44,10 @@ I recorded a really short podcast in which I talked about this project. So in ca
 - SEO
 - Offline Support
 
+**Lighthouse score 📈**
+
+![Ligthouse score](./docs/lighthouse.png)
+
 ## How to Start 👷‍
 
 ## Screenshot and Design 👩‍🎨

@@ -1,12 +1,10 @@
 import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 import { Link as GatsbyLink } from 'gatsby';
-import { Link as RebassLink } from 'rebass';
+import { Link as RebassLink, Box } from 'rebass';
 import { isExternalUrl } from '../utils/link';
 
-const StyledLink = styled.li`
-  display: inline-block;
-
+const LinkContainer = styled.span`
   & a {
     color: inherit;
     text-decoration: none;
@@ -23,8 +21,8 @@ type Props = {
   children: ReactNode;
 };
 
-const Link = ({ path, children }: Props) => (
-  <StyledLink as="li">
+const Link = ({ path, children, ...rest }: Props) => (
+  <LinkContainer>
     {isExternalUrl(path) ? (
       <RebassLink href={path} target="_blank">
         {children}
@@ -32,7 +30,7 @@ const Link = ({ path, children }: Props) => (
     ) : (
       <GatsbyLink to={path}>{children}</GatsbyLink>
     )}
-  </StyledLink>
+  </LinkContainer>
 );
 
 export default Link;
