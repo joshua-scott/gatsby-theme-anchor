@@ -1,6 +1,7 @@
 import React, { createContext } from 'react';
 import footer from '../mocks/footer';
 import header from '../mocks/header';
+import helmet from '../mocks/helmet';
 
 interface ContextInterface {
   mocked: boolean;
@@ -15,6 +16,7 @@ const MockWrapper = ({ mocked, children }) => {
     mocks: {
       footer,
       header,
+      helmet,
     },
   };
 

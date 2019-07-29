@@ -1,0 +1,9 @@
+{
+  "name": "The ES Podcast",
+  "short_name": "The ES Podcast",
+  "start_url": "/",
+  "background_color": "#FFF",
+  "theme_color": "#9C27B0",
+  "display": "minimal-ui",
+  "icon": "static/favicon.ico"
+}

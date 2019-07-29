@@ -7,6 +7,7 @@ import Footer from './Footer';
 import Header from './Header';
 import MockWrapper from './MockWrapper';
 import Container from './Container';
+import Helmet from './Helmet';
 
 const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
@@ -57,6 +58,7 @@ const Layout = ({ children, hero, mocked }: Props) => {
       <GlobalStyle />
       <ThemeProvider theme={theme}>
         <AppWrapper>
+          <Helmet />
           <MockWrapper mocked={mocked}>
             {hero || <Header />}
             <Main>

@@ -68,6 +68,11 @@ module.exports = ({ anchorRss, path: clientPath }) => {
       'gatsby-transformer-remark',
       'gatsby-plugin-emotion',
       'gatsby-plugin-styled-components',
+      {
+        resolve: 'gatsby-plugin-manifest',
+        options: require(`${clientPath}/manifest.json`),
+      },
+      'gatsby-plugin-offline',
     ],
   };
 };
