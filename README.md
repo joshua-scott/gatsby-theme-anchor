@@ -41,6 +41,8 @@ I recorded a really short podcast in which I talked about this project. So in ca
 - Anchor integration
 - [Netlify CMS](https://www.netlifycms.org/) integration
 - Ready for deployment with [Netlify](https://www.netlify.com/)
+- SEO
+- Offline Support
 
 ## How to Start 👷‍
 
