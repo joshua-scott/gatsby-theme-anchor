@@ -35,7 +35,8 @@ const Episode = ({
   return (
     <Card
       m={3}
-      p={4}
+      px={4}
+      py={3}
       bg="white"
       borderRadius={8}
       boxShadow={theme.shadows.large}

@@ -30,7 +30,9 @@ const Banner = ({ title, description, logo, podcastLinks = [] }: Podcast) => (
   >
     <Box width={[1, 2 / 3, 3 / 4]} color="textAlt">
       <Heading fontSize={[5, 5, 6]}>{title}</Heading>
-      <Heading fontSize={[4, 4, 5]}>{description}</Heading>
+      <Heading fontSize={[4, 4, 5]} my={2}>
+        {description}
+      </Heading>
       <LinkList links={podcastLinks.map(addPlatformName)} />
     </Box>
     <Box width={[2 / 3, 1 / 3, 1 / 4]} m="auto">

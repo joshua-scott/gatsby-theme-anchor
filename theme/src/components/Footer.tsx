@@ -46,8 +46,10 @@ export const FooterTemplate = ({
       <Container>
         <Flex flexWrap="wrap">
           <Box width={[1, 1 / 4]}>
-            <Text fontWeight="bold">{name}</Text>
-            <Text my={2}>{description}</Text>
+            <Text fontWeight="bold" mb={2}>
+              {name}
+            </Text>
+            <Text>{description}</Text>
           </Box>
 
           <Box width={[1 / 3, 1 / 4]}>
@@ -64,7 +66,9 @@ export const FooterTemplate = ({
           </Box>
 
           <Box width={[1 / 3, 1 / 4]}>
-            <Text fontWeight="bold">Social</Text>
+            <Text fontWeight="bold" mb={2}>
+              Social
+            </Text>
             <LinkList links={socialLinks.map(addSocialIcon)} />
           </Box>
         </Flex>
