@@ -1,7 +1,7 @@
 import React from 'react';
 import AudioCard from 'audiocard';
 import { useContext } from 'react';
-import { ThemeContext } from 'styled-components';
+import styled, { ThemeContext } from 'styled-components';
 
 type Props = {
   url: string;
@@ -10,11 +10,17 @@ type Props = {
   link?: string;
 };
 
+const StyledAudioCard = styled(AudioCard)`
+  img {
+    width: 100px;
+  }
+`;
+
 const AudioPlayer = ({ url, title, cover, link }: Props) => {
   const theme = useContext(ThemeContext);
 
   return (
-    <AudioCard
+    <StyledAudioCard
       source={url}
       title={title}
       skipBackSeconds={10}

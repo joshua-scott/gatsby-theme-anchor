@@ -1,21 +1,22 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { Flex, Image, Heading } from 'rebass';
+import { ImageLink } from '../types/Link';
 
 type Props = {
-  reason: string;
-  image: string;
+  children: ReactNode;
+  image: ImageLink;
 };
 
-const ErrorMessage = ({ reason, image }: Props) => (
+const ErrorMessage = ({ children, image }: Props) => (
   <Flex
     flexDirection="column"
     m={2}
     justifyContent="center"
     alignItems="center"
   >
-    <Image width={[1, 1, 2 / 3]} src={`img/${image}.svg`} alt={reason} my={5} />
-    <Heading fontSize={[3, 4]} textAlign="center">
-      {reason}
+    <Image width={[1, 1, 2 / 3]} src={image.src} alt={image.alt} my={5} />
+    <Heading fontSize={[4, 5]} textAlign="center">
+      {children}
     </Heading>
   </Flex>
 );

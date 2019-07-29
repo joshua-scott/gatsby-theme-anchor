@@ -17,7 +17,7 @@ const Author = ({ name, description, picture }: Props) => {
       m={3}
       p={3}
       bg="white"
-      borderRadius={6}
+      borderRadius={8}
       width={400}
       boxShadow={theme.shadows.large}
     >

@@ -3,18 +3,24 @@ import Layout from '../components/Layout';
 import Hero from '../components/Hero';
 import Episode from '../components/Episode';
 import { graphql, useStaticQuery } from 'gatsby';
-import { Text, Flex, Box, Image, Heading } from 'rebass';
+import { Flex, Box, Heading } from 'rebass';
 import {
   Podcast as PodcastType,
   Episode as EpisodeType,
 } from '../types/Podcast';
 import ErrorMessage from '../components/ErrorMessage';
+import { parseToEpisode } from '../utils/parser';
 
 type Props = {
   latestEpisodes: EpisodeType[];
   podcast: PodcastType;
   mocked?: boolean;
   cover?: string;
+};
+
+const notFoundImage = {
+  src: 'img/not-found.svg',
+  alt: 'Not found',
 };
 
 export const LandingTemplate = ({
@@ -34,30 +40,21 @@ export const LandingTemplate = ({
         ))}
       </Flex>
     ) : (
-      <ErrorMessage
-        reason="Oops ... It seems that you don't have podcasts yet 😕"
-        image="not-found"
-      />
+      <ErrorMessage image={notFoundImage}>
+        Oops ... It seems that you don't have podcasts yet 😕
+      </ErrorMessage>
     )}
   </Layout>
 );
 
 const Landing = () => {
-  const { anchorPodcast, latestEpisodes, landing } = useStaticQuery(graphql`
+  const { anchorPodcast, allAnchorEpisode, landing } = useStaticQuery(graphql`
     query LandingQuery {
-      latestEpisodes: allAnchorEpisode(limit: 4) {
+      allAnchorEpisode(limit: 4) {
         nodes {
           id
           title
-          link
           content
-          itunes {
-            image
-            summary
-            duration
-            explicit
-          }
-          contentSnippet
           publishedDate: isoDate(formatString: "DD MMM YYYY")
           enclosure {
             url
@@ -103,10 +100,12 @@ const Landing = () => {
     podcastLinks: podcastLinks || [anchorPodcast.link],
   };
 
+  const episodes: EpisodeType[] = allAnchorEpisode.nodes.map(parseToEpisode);
+
   return (
     <LandingTemplate
       podcast={podcast}
-      latestEpisodes={[] || latestEpisodes.nodes}
+      latestEpisodes={episodes}
       cover={cover}
     />
   );

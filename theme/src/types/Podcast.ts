@@ -9,14 +9,10 @@ export type Podcast = {
 export type Episode = {
   id: string;
   title: string;
-  link: string;
   content: string;
-  contentSnippet: string;
   publishedDate: string;
-  enclosure: {
-    url: string;
-    type: string;
-    length: string;
-  };
-  itunes: any;
+  url: string;
+  duration?: number;
+  link?: string;
+  cover?: string;
 };
