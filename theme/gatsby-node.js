@@ -27,8 +27,6 @@ exports.createPages = ({ actions, reporter }) => {
 };
 
 exports.onCreateDevServer = ({ app }) => {
-  if (process.env.NODE_ENV === 'development') {
-    const fsMiddlewareAPI = require('netlify-cms-backend-fs/dist/fs');
-    fsMiddlewareAPI(app);
-  }
+  const fsMiddlewareAPI = require('netlify-cms-backend-fs/dist/fs');
+  fsMiddlewareAPI(app);
 };

@@ -35,9 +35,9 @@ module.exports = ({ anchorRss, path: clientPath }) => {
     );
   }
 
-  if (process.env.NODE_ENV === 'development') {
-    writeConfigFile(clientPath);
-  }
+  // if (process.env.NODE_ENV === 'development') {
+  //   writeConfigFile(clientPath);
+  // }
 
   return {
     siteMetadata: {
