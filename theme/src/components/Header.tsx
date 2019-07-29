@@ -1,13 +1,14 @@
 import React, { useContext } from 'react';
 import ReactHeadroom from 'react-headroom';
-import { graphql, useStaticQuery, Link } from 'gatsby';
-import { Flex } from 'rebass';
+import { graphql, useStaticQuery } from 'gatsby';
+import { Flex, Heading, Box } from 'rebass';
 import { Podcast } from '../types/Podcast';
 import { SitePage } from '../types/Gatsby';
 import { Location } from '@reach/router';
 import styled from 'styled-components';
 import { PageLink as PageLinkType } from '../types/Link';
 import LinkList from './LinkList';
+import Link from './Link';
 import { AppContext } from './MockWrapper';
 
 export type HeaderProps = {
@@ -17,11 +18,6 @@ export type HeaderProps = {
   currentPath?: string;
 };
 
-const HomeLink = styled(Link)`
-  color: ${props => props.theme.colors.textAlt};
-  text-decoration: none;
-`;
-
 const HeaderContainer = styled(ReactHeadroom)`
   .headroom--pinned {
     background: ${props => props.theme.colors.primaryDark};
@@ -30,6 +26,19 @@ const HeaderContainer = styled(ReactHeadroom)`
     props.transparent ? 'transparent' : props.theme.colors.primaryDark};
 `;
 
+const MenuItem = styled.span<{ selected: boolean }>`
+  ${props =>
+    props.selected && `border-bottom: 5px solid ${props.theme.colors.accent}`};
+  margin: ${props => props.theme.space[2]}px;
+  padding-bottom: ${props => props.theme.space[1]}px;
+`;
+
+const buildNavBar = (pages: PageLinkType[], currentPath: string) =>
+  pages.map(({ path, name }) => ({
+    path,
+    name: <MenuItem selected={currentPath === path}>{name}</MenuItem>,
+  }));
+
 export const HeaderTemplate = ({
   title,
   transparentHeader,
@@ -37,12 +46,18 @@ export const HeaderTemplate = ({
   currentPath,
 }: HeaderProps) => (
   <HeaderContainer transparent={transparentHeader}>
-    <Flex justifyContent="space-between" alignItems="center" px={4}>
-      <HomeLink to="/">
-        <h2>{title}</h2>
-      </HomeLink>
+    <Flex
+      justifyContent="space-between"
+      alignItems="center"
+      px={4}
+      py={3}
+      color="textAlt"
+    >
+      <Link path="/">
+        <Heading>{title}</Heading>
+      </Link>
 
-      <LinkList links={pages} selected={currentPath} />
+      <LinkList links={buildNavBar(pages, currentPath)} />
     </Flex>
   </HeaderContainer>
 );

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Header from './Header';
 import { Podcast } from '../types/Podcast';
 import LinkList from './LinkList';
-import { Text, Image, Flex, Heading, Box } from 'rebass';
+import { Image, Flex, Heading, Box } from 'rebass';
 import PodcastBadge from './PodcastBagde';
 import Container from './Container';
 
@@ -15,13 +15,6 @@ const HeroContainer = styled.div<{ background: string }>`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-`;
-
-const StyledBanner = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
 `;
 
 const addPlatformName = (link: string) => ({

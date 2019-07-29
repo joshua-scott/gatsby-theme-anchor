@@ -9,6 +9,7 @@ type ListDirection = 'vertical' | 'horizontal';
 
 const StyledList = styled.ul<{ direction: ListDirection }>`
   padding: 0;
+  margin: ${props => props.theme.space[1]}px;
   display: flex;
   flex-direction: ${props =>
     props.direction === 'vertical' ? 'column' : 'row'};
@@ -17,10 +18,10 @@ const StyledList = styled.ul<{ direction: ListDirection }>`
 type Props = {
   links: PageLinkType[];
   direction?: 'vertical' | 'horizontal';
-  selected?: string;
+  showSeparator?: boolean;
 };
 
-const LinkList = ({ direction = 'horizontal', links, selected }: Props) => (
+const LinkList = ({ direction = 'horizontal', links }: Props) => (
   <StyledList direction={direction}>
     {links.map(({ path, name }) => {
       const content = typeof name === 'string' ? toCamelCase(name) : name;
@@ -28,9 +29,7 @@ const LinkList = ({ direction = 'horizontal', links, selected }: Props) => (
 
       return (
         <Box {...margin} key={path}>
-          <Link path={path} selected={path === selected}>
-            {content}
-          </Link>
+          <Link path={path}>{content}</Link>
         </Box>
       );
     })}

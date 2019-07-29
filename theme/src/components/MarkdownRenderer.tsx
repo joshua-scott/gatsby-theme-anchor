@@ -3,13 +3,13 @@ import ReactMarkdown from 'react-markdown';
 import { Text } from 'rebass';
 
 const renderers = {
-  paragraph: ({ children }) => (
-    <Text fontSize={3} lineHeight={1.3} my={3}>
+  paragraph: ({ children, ...rest }) => (
+    <Text fontSize={3} lineHeight={1.3} my={3} {...rest}>
       {children}
     </Text>
   ),
-  listItem: ({ children }) => (
-    <Text as="li" fontSize={3} lineHeight={1.3} my={2}>
+  listItem: ({ children, ...rest }) => (
+    <Text as="li" fontSize={3} lineHeight={1.3} my={2} {...rest}>
       {children}
     </Text>
   ),

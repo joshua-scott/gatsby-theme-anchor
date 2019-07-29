@@ -9,8 +9,9 @@ import MockWrapper from './MockWrapper';
 import Container from './Container';
 
 const GlobalStyle = createGlobalStyle`
+  @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+  
   body {
-    @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
     font-family: '-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
     margin: 0;
   }

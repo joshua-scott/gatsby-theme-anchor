@@ -2,6 +2,9 @@ exports.createPages = ({ actions, reporter }) => {
   actions.createPage({
     path: '/',
     component: require.resolve('./src/templates/Landing.tsx'),
+    context: {
+      name: 'Home',
+    },
   });
   actions.createPage({
     path: '/404',

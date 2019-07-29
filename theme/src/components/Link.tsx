@@ -4,9 +4,7 @@ import { Link as GatsbyLink } from 'gatsby';
 import { Link as RebassLink } from 'rebass';
 import { isExternalUrl } from '../utils/link';
 
-const StyledLink = styled.li<{ selected }>`
-  color: ${props =>
-    props.selected ? props.theme.colors.accent : props.theme.colors.textAlt};
+const StyledLink = styled.li`
   display: inline-block;
 
   & a {
@@ -23,11 +21,10 @@ const StyledLink = styled.li<{ selected }>`
 type Props = {
   path: string;
   children: ReactNode;
-  selected?: boolean;
 };
 
-const Link = ({ path, selected, children }: Props) => (
-  <StyledLink as="li" selected={selected}>
+const Link = ({ path, children }: Props) => (
+  <StyledLink as="li">
     {isExternalUrl(path) ? (
       <RebassLink href={path} target="_blank">
         {children}

@@ -16,12 +16,12 @@ export const AboutTemplate = ({ content, mocked, authors = [] }: Props) => (
 
     <MarkdownRenderer markdown={content} />
 
-    <Heading fontSize={4} mt={4}>
+    <Heading fontSize={4} mt={4} mb={2}>
       Authors
     </Heading>
     <Flex flexWrap="wrap">
       {authors.map(author => (
-        <Author {...author} />
+        <Author {...author} key={author.name} />
       ))}
     </Flex>
   </Layout>
