@@ -21,8 +21,11 @@ const theme = {
   },
   shadows: {
     small: '0 0 4px rgba(0, 0, 0, .125)',
-
     large: '0 2px 8px rgba(0, 0, 0, .125)',
+  },
+  gradients: {
+    top: `linear-gradient(${colors.primaryDark}, ${colors.primary})`,
+    bottom: `linear-gradient(${colors.primary}, ${colors.primaryDark})`,
   },
 };
 

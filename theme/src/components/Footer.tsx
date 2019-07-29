@@ -1,5 +1,5 @@
 import React, { useContext, ReactNode } from 'react';
-import { Flex, Text, Box, Link } from 'rebass';
+import { Flex, Text, Box } from 'rebass';
 import { PageLink, SocialLink } from '../types/Link';
 import Container from './Container';
 import { AppContext } from './MockWrapper';
@@ -8,6 +8,8 @@ import { useStaticQuery, graphql } from 'gatsby';
 import { normalizeName } from '../utils/string';
 import { detectPodcastPlatform } from '../utils/link';
 import SocialIcon from './SocialIcon';
+import styled from 'styled-components';
+import Link from './Link';
 
 export type FooterProps = {
   name: string;
@@ -27,6 +29,11 @@ const addSocialIcon = (link: string) => ({
   name: <SocialIcon link={link} />,
 });
 
+const FooterContainer = styled(Box)`
+  background-image: ${props => props.theme.gradients.bottom};
+  color: ${props => props.theme.colors.textAlt};
+`;
+
 export const FooterTemplate = ({
   name,
   description,
@@ -35,7 +42,7 @@ export const FooterTemplate = ({
   socialLinks = [],
 }: FooterProps) => {
   return (
-    <Box as="footer" backgroundColor="primaryDark" color="textAlt" p={3}>
+    <FooterContainer as="footer" p={3}>
       <Container>
         <Flex flexWrap="wrap">
           <Box width={[1, 1 / 4]}>
@@ -71,18 +78,14 @@ export const FooterTemplate = ({
           `}
         />
         <Text textAlign="center">
-          This site was develop using
-          <Link
-            href="https://github.com/EmaSuriano/gatsby-theme-anchor"
-            mx={2}
-            color="textAlt"
-          >
-            gatsby-theme-anchor
+          This site was develop using &nbsp;
+          <Link path="https://github.com/EmaSuriano/gatsby-theme-anchor">
+            <b>gatsby-theme-anchor</b>
           </Link>
-          ❤
+          &nbsp; ❤
         </Text>
       </Container>
-    </Box>
+    </FooterContainer>
   );
 };
 

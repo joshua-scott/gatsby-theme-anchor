@@ -1,34 +1,9 @@
 import React, { ReactNode } from 'react';
-import { Link } from 'gatsby';
 import { PageLink as PageLinkType } from '../types/Link';
 import styled from 'styled-components';
-import { isExternalUrl } from '../utils/link';
 import { toCamelCase } from '../utils/string';
-
-type PageLinkProps = {
-  children: ReactNode;
-  selected: boolean;
-};
-
-const StyledLink = styled.li<PageLinkProps & { direction: string }>`
-  color: ${props =>
-    props.selected ? props.theme.colors.accent : props.theme.colors.textAlt};
-  display: inline-block;
-  ${props =>
-    props.direction === 'horizontal'
-      ? `margin: 0 ${props.theme.space[2]}px;`
-      : `margin: ${props.theme.space[1]}px 0;`}
-
-  & a {
-    color: inherit;
-    text-decoration: none;
-  }
-
-  & a:hover {
-    transition: color 0.2s;
-    color: ${props => props.theme.colors.accent};
-  }
-`;
+import Link from './Link';
+import { Box } from 'rebass';
 
 type ListDirection = 'vertical' | 'horizontal';
 
@@ -49,19 +24,14 @@ const LinkList = ({ direction = 'horizontal', links, selected }: Props) => (
   <StyledList direction={direction}>
     {links.map(({ path, name }) => {
       const content = typeof name === 'string' ? toCamelCase(name) : name;
+      const margin = direction === 'horizontal' ? { mx: 1 } : { my: 1 };
 
       return (
-        <StyledLink
-          selected={path === selected}
-          key={path}
-          direction={direction}
-        >
-          {isExternalUrl(path) ? (
-            <a href={path}>{content}</a>
-          ) : (
-            <Link to={path}>{content}</Link>
-          )}
-        </StyledLink>
+        <Box {...margin} key={path}>
+          <Link path={path} selected={path === selected}>
+            {content}
+          </Link>
+        </Box>
       );
     })}
   </StyledList>

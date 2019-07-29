@@ -11,9 +11,7 @@ const HeroContainer = styled.div<{ background: string }>`
   background-image: ${props =>
     props.background
       ? `url(${props.background})`
-      : `linear-gradient(${props.theme.colors.primaryDark}, ${
-          props.theme.colors.primary
-        })`};
+      : `${props.theme.gradients.top}`};
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

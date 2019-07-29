@@ -15,18 +15,20 @@ const Author = ({ name, description, picture }: Props) => {
   return (
     <Card
       m={3}
-      p={4}
+      p={3}
       bg="white"
       borderRadius={6}
-      width={290}
+      width={400}
       boxShadow={theme.shadows.large}
     >
-      <Flex flexDirection="column">
-        <Heading>{name}</Heading>
-        <Text my={2} color="textSecondary">
-          {description}
-        </Text>
-        <StyledImage src={picture} alt={name} m="auto" />
+      <Flex flexDirection="row">
+        <Box width={1 / 2} pr={3}>
+          <Heading>{name}</Heading>
+          <Text my={2} color="textSecondary">
+            {description}
+          </Text>
+        </Box>
+        <StyledImage width={1 / 2} src={picture} alt={name} m="auto" />
       </Flex>
     </Card>
   );
