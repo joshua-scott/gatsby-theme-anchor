@@ -26,11 +26,7 @@ When a podcast starts the most difficult part is sharing it with the rest of wor
 - Showcase all the podcast inside the [Podcast Page](#Podcast)
 - Possibility to add/edit/remove content using a [CMS view](#CMS)
 
-I recorded a really short podcast in which I talked about this project. So in case you want to know more about it and also listen to my first "real" podcast episode, I leave you the link!
-
-<a href="https://anchor.fm/the-es-podcast/episodes/E01---Gatsby-Theme-Anchor-e4p592">
-  <img src="./theme/static/img/badges/badge-anchor.png" alt="Listen on Anchor" width="150px"/>
-</a>
+BTW, I recorded a really short podcast in which I talked about this project. So in case you want to know more about it here it's the [link to the episde](https://anchor.fm/the-es-podcast/episodes/E01---Gatsby-Theme-Anchor-e4p592)!
 
 ## Features 🤹
 
@@ -42,7 +38,7 @@ I recorded a really short podcast in which I talked about this project. So in ca
 - [Netlify CMS](https://www.netlifycms.org/) integration
 - Ready for deployment with [Netlify](https://www.netlify.com/)
 - SEO
-- Offline Support
+- PWA - Offline Support
 
 **Lighthouse score 📈**
 
@@ -109,23 +105,11 @@ After running the project you should be able to go to the [`http://localhost:800
 
 ## Customization 🛍
 
-### Changing Podcast 🎙
+Extracted to [Customization](./docs/CUSTOMIZATION.md).
 
-The first thing you might want to do is change the podcast of the demo to yours. In order to that you need to know your podcast RSS link, which you can find inside the Setting of your podcast. The steps are:
+## Trouble Shooting 💥
 
-- Open [Anchor](https://anchor.fm/)
-- Log in with your account.
-- Go to `Update Settings` in the right top corner
-- Open `Advanced` section
-- Copy the RSS feed value.
-
-![Anchor Advanced Settings](./docs/anchor-advanced-settings.png)
-
-Once you have that value, you need to open the `gatsby-config.json` of the project and change the value of `rssValue` provided to `gatsby-theme-anchor`. After that you need to restart the server and you should be able to preview your Podcast episodes.
-
-### Data 📓
-
-### Theming 🎨
+Extracted to [Troubleshooting](./docs/TROUBLESHOOTING.md).
 
 ## Deploying your site 📦
 
@@ -135,11 +119,7 @@ Please follow this [Step by Step Guide](https://www.netlify.com/blog/2016/09/29/
 
 This last step is totally optionally but it's one of my favorite of this setup. As this theme use Netlify CMS you can enable the `Identity` feature inside the deployment configuration that will allow to modify your data through the deployed site by making commit to the repository.
 
-Please follow this [Guide](https://www.netlifycms.org/docs/authentication-backends/) to enable.I already provide a proper `config.yml` inside `/static/admin` folder but you still need to enable from your side. In order to check if everything is working, go to the route `/admin` of your deployed site, there you need to authenticate (you can pick different services in the previous step) and once you are inside the CMS every change you make it will push a commit to the repository. Dispatching a new release of your website 😄
-
-## Trouble Shooting 💥
-
-In order to keep the README short I decided to move this section to a [separate file](./docs/TROUBLESHOOTING.md).
+Please follow this [Guide](https://www.netlifycms.org/authentication-backends/) to enable.I already provide a proper `config.yml` inside `/static/admin` folder but you still need to enable from your side. In order to check if everything is working, go to the route `/admin` of your deployed site, there you need to authenticate (you can pick different services in the previous step) and once you are inside the CMS every change you make it will push a commit to the repository. Dispatching a new release of your website 😄
 
 ## Contributing 💪
 
