@@ -29,7 +29,9 @@ type Props = {
 const Link = ({ path, selected, children }: Props) => (
   <StyledLink as="li" selected={selected}>
     {isExternalUrl(path) ? (
-      <RebassLink href={path}>{children}</RebassLink>
+      <RebassLink href={path} target="_blank">
+        {children}
+      </RebassLink>
     ) : (
       <GatsbyLink to={path}>{children}</GatsbyLink>
     )}

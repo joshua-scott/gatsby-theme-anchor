@@ -8,7 +8,8 @@ import moment from 'moment';
 type Props = { large?: boolean } & PodcastTypes.Episode;
 
 const StyledSummary = styled(Box)<{ longDescription: boolean }>`
-  height: ${props => (props.longDescription ? '250' : '200')}px;
+  min-height: 200px;
+  max-height: ${props => (props.longDescription ? '300' : '250')}px;
   overflow: auto;
 `;
 
