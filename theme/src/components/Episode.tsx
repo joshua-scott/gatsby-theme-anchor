@@ -16,6 +16,12 @@ const StyledSummary = styled(Box)<{ longDescription: boolean }>`
 const numberToDuration = (seconds: number) =>
   moment.duration(seconds, 'seconds').humanize();
 
+const EpisodeTitle = styled(Heading)`
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+`;
+
 const Episode = ({
   title,
   link,
@@ -42,13 +48,15 @@ const Episode = ({
       boxShadow={theme.shadows.large}
     >
       <Flex justifyContent="space-between" alignItems="center">
-        <Heading fontSize={[3, 4]} lineHeight={2}>
+        <EpisodeTitle fontSize={[3, 4]} lineHeight={2}>
           {title}
-        </Heading>
+        </EpisodeTitle>
 
-        <Text fontWeight="bold" color="textSecondary">
-          {sideText}
-        </Text>
+        {large && (
+          <Text fontWeight="bold" color="textSecondary">
+            {sideText}
+          </Text>
+        )}
       </Flex>
       <StyledSummary
         longDescription={large}
