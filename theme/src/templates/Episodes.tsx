@@ -61,7 +61,7 @@ const Episodes = () => {
   `);
 
   const episodes: EpisodeType[] = allAnchorEpisode.nodes.map(parseToEpisode);
-  return <EpisodesTemplate episodes={[] || episodes} />;
+  return <EpisodesTemplate episodes={episodes} />;
 };
 
 export default Episodes;

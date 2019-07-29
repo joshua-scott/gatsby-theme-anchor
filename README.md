@@ -2,8 +2,6 @@
 
 # gatsby-theme-anchor
 
-**⚠️️️️️️⚠️This theme is still in development, avoid using it for production. ⚠️️⚠️**
-
 <p align="center">
   <a href="https://gatsby-theme-anchor.netlify.com/">
     <img src="./docs/cover.jpeg" alt="Cover" />
@@ -19,28 +17,34 @@
 
 [Live Demo](https://gatsby-theme-anchor.netlify.com/)
 
-## Motivation
+## Motivation 🤔
 
-When a podcast starts the most difficult part is sharing it with the rest of world, this Gatsby Theme will help to solve that! The idea behind it is to provide a customizable platform where the content creators can:
+When a podcast starts the most difficult part is sharing it with the rest of world, this Gatsby Theme will help to solve that! The idea behind it is to provide a customizable platform where the podcasters can:
 
-- Have a [Landing page](###Landing) with the last episodes of the show and more relevant information.
-- Add information about the show inside the [About Page](###About)
-- Showcase all the podcast inside the [Podcast Page](###Podcast)
-- Post rich content news (using Markdown) inside [News Page](###News)
-- Possibility to add/edit/remove content using a [CMS view](###CMS)
+- Have a [Landing page](#landing) with the last episodes of the show and more relevant information.
+- Add information about the show inside the [About Page](#About)
+- Showcase all the podcast inside the [Podcast Page](#Podcast)
+- Possibility to add/edit/remove content using a [CMS view](#CMS)
+
+I recorded a really short podcast in which I talked about this project. So in case you want to know more about it and also listen to my first "real" podcast episode, I leave you the link!
+
+<a href="https://anchor.fm/the-es-podcast/episodes/E01---Gatsby-Theme-Anchor-e4p592">
+  <img src="./theme/static/img/badges/badge-anchor.png" alt="Listen on Anchor" width="150px"/>
+</a>
 
 ## Features 🤹
 
-- Typescript
-- CSS in JS
-- Theming
+- Gatsby theme 🔥
+- Typescript support
+- CSS in JS using [Rebass](https://rebassjs.org/)
+- Theming with [ThemeProvider](https://www.styled-components.com/docs/advanced)
 - Anchor integration
-- Netlify CMS integration
-- Provide a das
+- [Netlify CMS](https://www.netlifycms.org/) integration
+- Ready for deployment with [Netlify](https://www.netlify.com/)
 
-## How to Start
+## How to Start 👷‍
 
-## Screenshot and Design
+## Screenshot and Design 👩‍🎨
 
 Before jumping into the screenshots I want to thank all these amazing resources that allowed to make it that good ✨:
 
@@ -80,7 +84,7 @@ Before jumping into the screenshots I want to thank all these amazing resources 
 | -------------------------------------------------- | ---------------------------------------------- |
 | ![CMS landing](./docs/screenshots/cms-landing.png) | ![CMS about](./docs/screenshots/cms-about.png) |
 
-## Deploying your site
+## Deploying your site 📦
 
 ## Customization
 
@@ -88,7 +92,7 @@ Before jumping into the screenshots I want to thank all these amazing resources 
 
 In order to keep the README short I decided to move this section to a [separate file](./docs/TROUBLESHOOTING.md).
 
-## Contributing
+## Contributing 💪
 
 This project is using yarn Workspace in order to be able to run a Gatsby project using the source code of the theme. Follow these steps to run the demo locally:
 
