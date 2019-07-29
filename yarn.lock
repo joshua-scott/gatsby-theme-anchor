@@ -5079,9 +5079,9 @@ gatsby-telemetry@^1.1.7:
     uuid "3.3.2"
 
 gatsby-theme-anchor@*:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/gatsby-theme-anchor/-/gatsby-theme-anchor-1.2.0.tgz#bfc63abce9c92c763286d9f83939064aac056948"
-  integrity sha512-P8wkCfgESl4rZ86hNzeoe2zB0dq8UqgAg3bhylRvkIUUN5lT5NpzO7uvIES01ujRuLic1W/LTK9YiF0YgQqobg==
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/gatsby-theme-anchor/-/gatsby-theme-anchor-1.2.1.tgz#bd50e74f6a7bc65920da13cdec2ee92098985a6f"
+  integrity sha512-EpJ/l83AKaq+Ce0H5KDgpA7/tqOUPtwtIwtHaQ+GJ591B+kDG/V6o4sGgIQocFIrrZDAvbyLgSldgYna9PId4w==
   dependencies:
     "@emotion/core" "^10.0.14"
     "@mdx-js/react" "^1.0.21"
