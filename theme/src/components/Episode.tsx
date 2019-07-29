@@ -5,7 +5,7 @@ import { Card, Text, Box, Flex, Heading } from 'rebass';
 import styled, { ThemeContext } from 'styled-components';
 import moment from 'moment';
 
-type Props = { large: boolean } & PodcastTypes.Episode;
+type Props = { large?: boolean } & PodcastTypes.Episode;
 
 const StyledSummary = styled(Box)<{ longDescription: boolean }>`
   height: ${props => (props.longDescription ? '250' : '200')}px;

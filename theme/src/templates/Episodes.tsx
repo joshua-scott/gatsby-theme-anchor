@@ -2,7 +2,7 @@ import React from 'react';
 import Layout from '../components/Layout';
 import { useStaticQuery, graphql } from 'gatsby';
 import { Episode as EpisodeType } from '../types/Podcast';
-import { Flex, Box } from 'rebass';
+import { Flex } from 'rebass';
 import Episode from '../components/Episode';
 import { parseToEpisode } from '../utils/parser';
 
