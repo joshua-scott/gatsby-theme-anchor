@@ -52,18 +52,20 @@ type Props = {
 
 const Layout = ({ children, hero, mocked }: Props) => {
   return (
-    <ThemeProvider theme={theme}>
-      <MockWrapper mocked={mocked}>
+    <React.Fragment>
+      <GlobalStyle />
+      <ThemeProvider theme={theme}>
         <AppWrapper>
-          <GlobalStyle />
-          {hero || <Header />}
-          <Main>
-            <Container py={[4, 5]}>{children}</Container>
-          </Main>
-          <Footer />
+          <MockWrapper mocked={mocked}>
+            {hero || <Header />}
+            <Main>
+              <Container py={[4, 5]}>{children}</Container>
+            </Main>
+            <Footer />
+          </MockWrapper>
         </AppWrapper>
-      </MockWrapper>
-    </ThemeProvider>
+      </ThemeProvider>
+    </React.Fragment>
   );
 };
 
