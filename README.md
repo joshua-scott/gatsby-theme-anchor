@@ -15,7 +15,7 @@
   </i>
 </p>
 
-[Live Demo](https://gatsby-theme-anchor.netlify.com/)
+### [Live Demo](https://gatsby-theme-anchor.netlify.com/)
 
 ## Motivation 🤔
 
