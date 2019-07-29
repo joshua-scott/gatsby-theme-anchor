@@ -1,14 +1,4 @@
-// Palette generated with https://www.materialpalette.com/purple/pink
-const colors = {
-  primary: '#9C27B0',
-  primaryDark: '#7B1FA2',
-  primaryLight: '#E1BEE7',
-  accent: '#FF4081',
-  text: '#4B4453',
-  textSecondary: '#757575',
-  textAlt: '#FFF',
-  background: '#FFF',
-};
+import colors from './colors';
 
 const theme = {
   breakpoints: ['40em', '50em', '55em'],

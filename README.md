@@ -105,9 +105,27 @@ This will clone the project with only the example on it. Then you need to instal
 > yarn start #start project
 ```
 
-After running the project you should be able to go to the [`http://localhost:8000`](http://localhost:8000) and see the [Landing Page](#landing). This means that you set up the theme successfully, now let's jump into the Customization!
+After running the project you should be able to go to the [`http://localhost:8000`](http://localhost:8000) and see the [Landing Page](#landing). This means that you set up the theme successfully, now let's see how to make it yours!
 
-## Customization 🎨
+## Customization 🛍
+
+### Changing Podcast 🎙
+
+The first thing you might want to do is change the podcast of the demo to yours. In order to that you need to know your podcast RSS link, which you can find inside the Setting of your podcast. The steps are:
+
+- Open [Anchor](https://anchor.fm/)
+- Log in with your account.
+- Go to `Update Settings` in the right top corner
+- Open `Advanced` section
+- Copy the RSS feed value.
+
+![Anchor Advanced Settings](./docs/anchor-advanced-settings.png)
+
+Once you have that value, you need to open the `gatsby-config.json` of the project and change the value of `rssValue` provided to `gatsby-theme-anchor`. After that you need to restart the server and you should be able to preview your Podcast episodes.
+
+### Data 📓
+
+### Theming 🎨
 
 ## Deploying your site 📦
 
