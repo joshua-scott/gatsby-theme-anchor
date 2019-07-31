@@ -40,7 +40,7 @@ BTW, I recorded a really short podcast in which I talked about this project. So 
 - SEO
 - PWA - Offline Support
 
-**Lighthouse score 📈**
+### Lighthouse score 📈
 
 ![Ligthouse score](./docs/lighthouse.png)
 
@@ -105,11 +105,11 @@ After running the project you should be able to go to the [`http://localhost:800
 
 ## Customization 🛍
 
-Extracted to [Customization](./docs/CUSTOMIZATION.md).
+Extracted to **[Customization](./docs/CUSTOMIZATION.md).**
 
 ## Trouble Shooting 💥
 
-Extracted to [Troubleshooting](./docs/TROUBLESHOOTING.md).
+Extracted to **[Troubleshooting](./docs/TROUBLESHOOTING.md).**
 
 ## Deploying your site 📦
 
