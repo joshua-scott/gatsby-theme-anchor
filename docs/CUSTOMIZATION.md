@@ -1,4 +1,6 @@
-### Changing Podcast 🎙
+# Customization 🛍
+
+## Changing Podcast 🎙
 
 The first thing you might want to do is change the podcast of the demo to yours. In order to that you need to know your podcast RSS link, which you can find inside the Setting of your podcast. The steps are:
 
@@ -12,7 +14,7 @@ The first thing you might want to do is change the podcast of the demo to yours.
 
 Once you have that value, you need to open the `gatsby-config.json` of the project and change the value of `rssValue` provided to `gatsby-theme-anchor`. After that you need to restart the server and you should be able to preview your Podcast episodes.
 
-### Theming 🎨
+## Theming 🎨
 
 Luckily Gatsby already thought about this problem and they came out with an idea out of the box, called Component Shadowing, which consist in the developer can override any file inside the theme by creating a file with the same name and location in his project inside a folder with the name of the theme.
 
@@ -56,7 +58,7 @@ I recommend using the CMS for these reasons:
 
 In order to open the CMS you need to just append at the end your url `/admin`. This will open the CMS dashboard where you can see all the entities that you can modify.
 
-### Data Entities
+## Data Entities
 
 Inside the project there are basically two main data collection, Landing and About. As you might guess they are coupled to the respective screen.
 
@@ -71,6 +73,6 @@ Inside the project there are basically two main data collection, Landing and Abo
   - _Description_: the summary of you podcast. You can write this field by using Markdown syntax that will allow you to introduce images or lists if you need it.
   - _List of Authors_: for each of them you can set the name, a small description and an image.
 
-### PWA values 📱
+## PWA values 📱
 
 The plugin provides all the required plugin to make your website a PWA and offline support. In order to change the configuration values for the PWA you need to change the `manifest.json` located in the root of your project. Most probably you just to update the `name` and `short_name`, plus with the `background_color` and `theme_color`. You can leave the rest as it's.
