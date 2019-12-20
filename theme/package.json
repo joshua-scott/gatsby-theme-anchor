@@ -44,7 +44,7 @@
     "netlify-cms-app": "^2.9.6",
     "react-headroom": "^2.2.8",
     "react-helmet": "^5.2.1",
-    "react-markdown": "^4.1.0",
+    "react-markdown": "^4.2.2",
     "rebass": "^3.1.2",
     "styled-components": "^4.3.2",
     "typescript": "^3.7.3",
