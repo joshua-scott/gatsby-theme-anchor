@@ -23,7 +23,7 @@
     "react-dom": "^16.12.0"
   },
   "dependencies": {
-    "@emotion/core": "^10.0.22",
+    "@emotion/core": "^10.0.27",
     "@mdx-js/react": "^1.5.3",
     "@types/rebass": "^3.0.4",
     "@types/styled-components": "^4.4.1",
