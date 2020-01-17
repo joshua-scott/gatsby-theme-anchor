@@ -1367,14 +1367,15 @@
     "@types/prop-types" "*"
     csstype "^2.2.0"
 
-"@types/rebass@^3.0.4":
-  version "3.0.4"
-  resolved "https://registry.yarnpkg.com/@types/rebass/-/rebass-3.0.4.tgz#c21ef30895d857a3bb0822084440739f448159d6"
-  integrity sha512-qTR46x+9niOIxOZJ/R0voBKes2YQb2wndC7kMLDuQ9baRB+3RO04tKF90y9jt/bEvD1gIMPaAsuKN/zqrekZOw==
+"@types/rebass@^4.0.4":
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/@types/rebass/-/rebass-4.0.4.tgz#48e74bb2c531e24298cbe8943ab64805291b3c87"
+  integrity sha512-JN3cns0vkjrs3zmPrR8Y45+74LO5ynhbnxkFGbSAeTUPGU5hxnezM42o409ioQGpgda2HiM2JK0SPBesXfH4gQ==
   dependencies:
     "@types/react" "*"
     "@types/styled-components" "*"
     "@types/styled-system" "*"
+    "@types/styled-system__css" "*"
 
 "@types/styled-components@*", "@types/styled-components@^4.4.2":
   version "4.4.2"
@@ -1392,6 +1393,13 @@
   integrity sha512-OjgPV9wz7+6Hg8TlcGWxzaNJus6L7TdOjjf/5kLu4gKw7DWlV4dYRZC5+hS4xynaoZW0Ha9u+3AC+N5IV6+8Kw==
   dependencies:
     csstype "^2.6.4"
+
+"@types/styled-system__css@*":
+  version "5.0.4"
+  resolved "https://registry.yarnpkg.com/@types/styled-system__css/-/styled-system__css-5.0.4.tgz#df83b015cf377ab39ecf33ea31339c05eeb9230a"
+  integrity sha512-SHHoNh9cCRTG9hcmCD2ua0NeYUrLmLXoMJ7g0U/e0FjrzcwNQtM5wjjEJVCVZymU632xA1PdPEykrtoSHTIecA==
+  dependencies:
+    csstype "^2.6.6"
 
 "@types/tmp@^0.0.32":
   version "0.0.32"
@@ -3800,6 +3808,11 @@ csstype@^2.2.0, csstype@^2.5.2, csstype@^2.5.7, csstype@^2.6.4:
   version "2.6.6"
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.6.6.tgz#c34f8226a94bbb10c32cc0d714afdf942291fc41"
   integrity sha512-RpFbQGUE74iyPgvr46U9t1xoQBM8T4BL8SxrN66Le2xYAPSaDJJKeztV3awugusb3g3G9iL8StmkBBXhcbbXhg==
+
+csstype@^2.6.6:
+  version "2.6.8"
+  resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.6.8.tgz#0fb6fc2417ffd2816a418c9336da74d7f07db431"
+  integrity sha512-msVS9qTuMT5zwAGCVm4mxfrZ18BNc6Csd0oJAtiFMZ1FAx1CCvy2+5MDmYoix63LM/6NDbNtodCiGYGmFgO0dA==
 
 currently-unhandled@^0.4.1:
   version "0.4.1"
